@@ -30,8 +30,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${spaceGrotesk.variable}`}>
-      <body className={inter.className}>{children}</body>
+    <html lang="en" className={`${inter.variable} ${spaceGrotesk.variable} scroll-smooth`}>
+      <body className={inter.className}>
+        {children}
+      </body>
     </html>
   );
 }
