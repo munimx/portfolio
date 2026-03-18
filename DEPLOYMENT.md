@@ -15,6 +15,7 @@
 - ✅ HTTPS enforced
 - ✅ Public repository
 - ✅ Automatic deployments on push to main
+- ✅ Vercel auto-deployments disabled (`vercel.json`)
 
 ### Pages Settings
 ```
@@ -105,6 +106,11 @@ gh run watch
 - Caches npm dependencies
 - Uploads to GitHub Pages artifact
 - Deploys via `actions/deploy-pages@v4`
+
+### vercel.json
+- `git.deploymentEnabled: false`
+- `github.enabled: false`
+- Prevents parallel Vercel deployments while keeping GitHub Pages as the only active pipeline
 
 ### Required Permissions
 ```yaml
