@@ -77,14 +77,14 @@ export default function Hero() {
       </div>
 
       {/* Scroll indicator */}
-      <motion.a
-        href="#about"
+      <motion.button
+        type="button"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1, delay: 1 }}
         className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-text-muted hover:text-white transition-colors cursor-pointer"
-        onClick={(e) => {
-          e.preventDefault();
+        aria-label="Scroll to About section"
+        onClick={() => {
           document.querySelector('#about')?.scrollIntoView({ behavior: 'smooth' });
         }}
       >
@@ -94,7 +94,7 @@ export default function Hero() {
         >
           <FiArrowDown className="text-2xl" />
         </motion.div>
-      </motion.a>
+      </motion.button>
     </section>
   );
 }

@@ -13,7 +13,7 @@ export default function GlassCard({
   variant = 'default',
   noPadding = false 
 }: GlassCardProps) {
-  const baseStyles = 'glass rounded-xl';
+  const baseStyles = 'glass rounded-2xl';
   
   const variantStyles = {
     default: '',

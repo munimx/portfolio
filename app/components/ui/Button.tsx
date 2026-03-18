@@ -20,7 +20,8 @@ export default function Button({
   className = '',
   external = false,
 }: ButtonProps) {
-  const baseStyles = 'inline-flex items-center justify-center font-medium rounded-lg transition-all duration-300 glass-hover';
+  const baseStyles =
+    'inline-flex items-center justify-center font-medium rounded-lg transition-colors duration-200 glass-hover focus-visible:outline-none';
   
   const variantStyles = {
     primary: 'glass text-white border-accent-primary hover:bg-accent-primary/20',
@@ -58,7 +59,7 @@ export default function Button({
   }
   
   return (
-    <button onClick={onClick} className={combinedClassName}>
+    <button type="button" onClick={onClick} className={combinedClassName}>
       {children}
     </button>
   );

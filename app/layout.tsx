@@ -1,15 +1,16 @@
-import type { Metadata } from "next";
-import { Inter, Space_Grotesk } from "next/font/google";
+import type { Metadata, Viewport } from "next";
+import { Manrope, Sora } from "next/font/google";
 import "./globals.css";
+import MotionProvider from "./components/MotionProvider";
 
-const inter = Inter({ 
+const manrope = Manrope({
   subsets: ["latin"],
-  variable: '--font-inter',
+  variable: '--font-manrope',
 });
 
-const spaceGrotesk = Space_Grotesk({
+const sora = Sora({
   subsets: ["latin"],
-  variable: '--font-space-grotesk',
+  variable: '--font-sora',
 });
 
 export const metadata: Metadata = {
@@ -58,15 +59,26 @@ export const metadata: Metadata = {
   },
 };
 
+export const viewport: Viewport = {
+  themeColor: '#0b1020',
+  colorScheme: 'dark',
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${spaceGrotesk.variable} scroll-smooth`}>
-      <body className={inter.className}>
-        {children}
+    <html lang="en" className={`${manrope.variable} ${sora.variable} scroll-smooth`}>
+      <body className={manrope.className}>
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[60] glass px-3 py-2 rounded-lg"
+        >
+          Skip to main content
+        </a>
+        <MotionProvider>{children}</MotionProvider>
       </body>
     </html>
   );

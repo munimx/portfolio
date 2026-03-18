@@ -36,13 +36,13 @@ export default function Navbar() {
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'glass py-4' : 'bg-transparent py-6'
+        isScrolled ? 'glass py-4 border-b border-white/10' : 'bg-transparent py-6'
       }`}
     >
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="text-2xl font-heading font-bold">
+          <Link href="/" className="text-2xl font-heading font-semibold tracking-tight focus-visible:outline-none">
             MA
           </Link>
 
@@ -53,7 +53,7 @@ export default function Navbar() {
                 key={item.name}
                 href={item.href}
                 onClick={(e) => handleNavClick(e, item.href)}
-                className="text-text-secondary hover:text-white transition-colors duration-300"
+                className="text-text-secondary hover:text-white transition-colors duration-300 focus-visible:outline-none"
               >
                 {item.name}
               </a>
@@ -65,6 +65,7 @@ export default function Navbar() {
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             className="md:hidden text-2xl text-white"
             aria-label="Toggle menu"
+            aria-expanded={isMobileMenuOpen}
           >
             {isMobileMenuOpen ? <FiX /> : <FiMenu />}
           </button>
@@ -78,7 +79,7 @@ export default function Navbar() {
                 key={item.name}
                 href={item.href}
                 onClick={(e) => handleNavClick(e, item.href)}
-                className="block py-3 text-text-secondary hover:text-white transition-colors duration-300"
+                className="block py-3 text-text-secondary hover:text-white transition-colors duration-300 focus-visible:outline-none"
               >
                 {item.name}
               </a>

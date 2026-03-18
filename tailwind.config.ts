@@ -16,8 +16,8 @@ const config: Config = {
         "accent-tertiary": "#ec4899",
       },
       fontFamily: {
-        sans: ['var(--font-inter)'],
-        heading: ['var(--font-space-grotesk)'],
+        sans: ['var(--font-manrope)'],
+        heading: ['var(--font-sora)'],
       },
       backdropBlur: {
         glass: '10px',
