@@ -50,7 +50,7 @@ export default function Contact() {
             Get In Touch
           </h2>
           <p className="text-center text-text-secondary mb-12 max-w-2xl mx-auto">
-            I'm always open to new opportunities, collaborations, and interesting projects.
+            I&apos;m always open to new opportunities, collaborations, and interesting projects.
             Feel free to reach out!
           </p>
         </motion.div>

@@ -48,7 +48,7 @@ export default function About() {
         >
           <GlassCard>
             <p className="text-lg text-text-secondary leading-relaxed mb-4">
-              I'm a Full Stack Developer with a passion for building innovative AI-powered applications
+              I&apos;m a Full Stack Developer with a passion for building innovative AI-powered applications
               and seamless user experiences. With expertise spanning modern web technologies, machine
               learning systems, and real-time architectures, I bring ideas to life through clean,
               efficient code.
@@ -56,7 +56,7 @@ export default function About() {
             <p className="text-lg text-text-secondary leading-relaxed">
               From semantic caching systems for LLMs to cross-platform AI assistants, I specialize in
               creating solutions that combine cutting-edge AI with practical, user-friendly interfaces.
-              I'm constantly exploring new technologies and pushing the boundaries of what's possible
+              I&apos;m constantly exploring new technologies and pushing the boundaries of what&apos;s possible
               in web and AI development.
             </p>
           </GlassCard>
