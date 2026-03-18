@@ -13,16 +13,27 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-  title: "Munim Ahmad - Full Stack Developer & AI Engineer",
-  description: "Portfolio of Munim Ahmad - Full Stack Developer specializing in AI/ML, TypeScript, Python, and modern web technologies. Featured projects: ReCallM, DocuChat, Folio.",
-  keywords: ["Full Stack Developer", "AI Engineer", "TypeScript", "Python", "React", "Next.js", "LLM", "Machine Learning", "Web Development"],
+  title: "Munim Ahmad - Full-Stack AI Engineer",
+  description:
+    "Portfolio of Munim Ahmad, Full-Stack AI Engineer focused on RAG systems, LLM optimization, and scalable backend architecture.",
+  keywords: [
+    "Full-Stack AI Engineer",
+    "RAG Systems",
+    "LLM Optimization",
+    "Machine Learning Engineer",
+    "Python",
+    "Next.js",
+    ".NET",
+    "Backend Architecture",
+  ],
   authors: [{ name: "Munim Ahmad" }],
   creator: "Munim Ahmad",
   publisher: "Munim Ahmad",
   metadataBase: new URL('https://munimx.github.io'),
   openGraph: {
-    title: "Munim Ahmad - Full Stack Developer & AI Engineer",
-    description: "Portfolio showcasing projects in AI/ML, web development, and real-time systems. Building intelligent applications with modern technologies.",
+    title: "Munim Ahmad - Full-Stack AI Engineer",
+    description:
+      "Building production-ready AI applications from model development to deployment, with a focus on RAG, latency optimization, and backend systems.",
     type: "website",
     locale: "en_US",
     url: "https://munimx.github.io/portfolio",
@@ -30,9 +41,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Munim Ahmad - Full Stack Developer & AI Engineer",
-    description: "Portfolio showcasing projects in AI/ML, web development, and real-time systems.",
-    creator: "@munimx",
+    title: "Munim Ahmad - Full-Stack AI Engineer",
+    description:
+      "Portfolio focused on production AI systems, model optimization, and full-stack delivery.",
   },
   robots: {
     index: true,

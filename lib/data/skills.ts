@@ -10,46 +10,49 @@ export interface SkillCategory {
 
 export const skillsData: SkillCategory[] = [
   {
-    category: 'Frontend',
+    category: 'AI / ML',
+    skills: [
+      { name: 'PyTorch' },
+      { name: 'Hugging Face' },
+      { name: 'LangChain' },
+      { name: 'LlamaIndex' },
+      { name: 'FastEmbed + ONNX' },
+      { name: 'ChromaDB / FAISS' },
+      { name: 'LoRA / QLoRA' },
+    ],
+  },
+  {
+    category: 'Backend Systems',
+    skills: [
+      { name: '.NET (C#)' },
+      { name: 'Node.js / Express' },
+      { name: 'FastAPI / Flask' },
+      { name: 'REST + GraphQL APIs' },
+      { name: 'WebSockets' },
+      { name: 'PostgreSQL + Redis' },
+      { name: 'Okta / Auth0 / JWT' },
+    ],
+  },
+  {
+    category: 'Frontend & Apps',
     skills: [
       { name: 'React' },
       { name: 'Next.js' },
       { name: 'TypeScript' },
-      { name: 'Tailwind CSS' },
-      { name: 'JavaScript' },
-      { name: 'HTML/CSS' },
-      { name: 'Vue.js' },
-    ],
-  },
-  {
-    category: 'Backend',
-    skills: [
-      { name: 'Node.js' },
-      { name: 'Python' },
-      { name: 'REST APIs' },
-      { name: 'WebSocket' },
-      { name: 'Express.js' },
-    ],
-  },
-  {
-    category: 'AI/ML',
-    skills: [
-      { name: 'LLMs' },
-      { name: 'OpenAI' },
-      { name: 'Embeddings' },
-      { name: 'Semantic Search' },
-      { name: 'RAG Systems' },
-    ],
-  },
-  {
-    category: 'Tools & Other',
-    skills: [
-      { name: 'Git' },
-      { name: 'Docker' },
-      { name: 'Kafka' },
       { name: 'Electron' },
-      { name: 'Chrome Extensions' },
-      { name: 'React Native' },
+      { name: 'Tailwind CSS' },
+      { name: 'Jest' },
+    ],
+  },
+  {
+    category: 'Cloud & DevOps',
+    skills: [
+      { name: 'AWS (EC2, S3, Lambda, ECS)' },
+      { name: 'Docker' },
+      { name: 'Kubernetes' },
+      { name: 'GitHub Actions' },
+      { name: 'Prometheus + Grafana' },
+      { name: 'RabbitMQ / Celery' },
     ],
   },
 ];

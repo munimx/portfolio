@@ -7,7 +7,7 @@ import { FiArrowDown } from 'react-icons/fi';
 
 export default function Hero() {
   return (
-    <section className="min-h-screen flex items-center justify-center relative overflow-hidden">
+    <section id="hero" className="min-h-screen flex items-center justify-center relative overflow-hidden">
       {/* Animated gradient background */}
       <div className="absolute inset-0 bg-gradient-to-br from-accent-primary/20 via-background to-accent-secondary/20" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-accent-tertiary/10 via-transparent to-transparent" />
@@ -20,7 +20,7 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h1 className="text-5xl md:text-7xl font-heading font-bold mb-6">
+            <h1 className="text-5xl md:text-7xl font-heading font-bold mb-6 text-balance">
               Hi, I&apos;m{' '}
               <span className="bg-gradient-to-r from-accent-primary to-accent-secondary bg-clip-text text-transparent">
                 Munim Ahmad
@@ -32,20 +32,33 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-xl md:text-2xl text-text-secondary mb-8"
+            className="text-xl md:text-2xl text-text-secondary mb-6"
           >
-            Full Stack Developer & AI Engineer
+            Full-Stack AI Engineer
           </motion.p>
 
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-lg text-text-muted mb-12 max-w-2xl mx-auto"
+            className="text-lg text-text-muted mb-8 max-w-2xl mx-auto"
           >
-            Building intelligent systems with TypeScript, Python, and modern web technologies.
-            Specializing in AI/ML, real-time applications, and seamless user experiences.
+            Building production AI systems end-to-end — from model optimization to deployment.
+            Recent delivery highlights include a <span className="text-white">65% inference latency reduction</span> and
+            a <span className="text-white">RAG pipeline serving 500+ daily queries at 98% uptime</span>.
           </motion.p>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.5 }}
+            className="flex flex-wrap items-center justify-center gap-2 mb-12"
+          >
+            <span className="glass px-3 py-1 rounded-full text-sm text-text-secondary">Lahore, Pakistan</span>
+            <span className="glass px-3 py-1 rounded-full text-sm text-text-secondary">RAG Systems</span>
+            <span className="glass px-3 py-1 rounded-full text-sm text-text-secondary">LLM Optimization</span>
+            <span className="glass px-3 py-1 rounded-full text-sm text-text-secondary">Backend Architecture</span>
+          </motion.div>
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -54,10 +67,10 @@ export default function Hero() {
             className="flex flex-wrap gap-4 justify-center"
           >
             <Button variant="primary" size="lg" href="#projects">
-              View My Work
+              Review Projects
             </Button>
             <Button variant="secondary" size="lg" href="#contact">
-              Get In Touch
+              Contact Me
             </Button>
           </motion.div>
         </div>
