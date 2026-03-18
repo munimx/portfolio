@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import GlassCard from './ui/GlassCard';
 import Button from './ui/Button';
 import { projectsData, categories } from '@/lib/data/projects';
-import { FiGithub, FiExternalLink, FiStar } from 'react-icons/fi';
+import { FiGithub, FiExternalLink } from 'react-icons/fi';
 
 export default function Projects() {
   const [selectedCategory, setSelectedCategory] = useState('All');
@@ -99,12 +99,6 @@ export default function Projects() {
                     <h3 className="text-xl font-heading font-semibold text-white flex-1">
                       {project.title}
                     </h3>
-                    {project.stars && (
-                      <div className="flex items-center text-text-muted ml-2">
-                        <FiStar className="mr-1" />
-                        <span className="text-sm">{project.stars}</span>
-                      </div>
-                    )}
                   </div>
 
                   {/* Category Badge */}
