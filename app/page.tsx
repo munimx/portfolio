@@ -33,9 +33,8 @@ export default function HomePage() {
           <span className="absolute -top-2.5 left-1/2 -translate-x-1/2 bg-bg px-3 font-mono text-[10px] text-accent-primary">Contact</span>
         </div>
         <Contact />
+        <Footer />
       </main>
-
-      <Footer />
     </>
   );
 }
