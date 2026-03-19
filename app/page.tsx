@@ -18,19 +18,19 @@ export default function HomePage() {
       <main className="ml-0 lg:ml-sidebar mt-nav min-h-screen">
         <Hero />
         <div className="border-t border-border max-w-content mx-auto relative">
-          <span className="absolute -top-2.5 left-1/2 -translate-x-1/2 bg-bg px-3 font-mono text-[10px] text-muted">Selected Work</span>
+          <span className="absolute -top-2.5 left-1/2 -translate-x-1/2 bg-bg px-3 font-mono text-[10px] text-accent-primary">Selected Work</span>
         </div>
         <Projects />
         <div className="border-t border-border max-w-content mx-auto relative">
-          <span className="absolute -top-2.5 left-1/2 -translate-x-1/2 bg-bg px-3 font-mono text-[10px] text-muted">Methodology</span>
+          <span className="absolute -top-2.5 left-1/2 -translate-x-1/2 bg-bg px-3 font-mono text-[10px] text-accent-primary">Methodology</span>
         </div>
         <About />
         <div className="border-t border-border max-w-content mx-auto relative">
-          <span className="absolute -top-2.5 left-1/2 -translate-x-1/2 bg-bg px-3 font-mono text-[10px] text-muted">Experience</span>
+          <span className="absolute -top-2.5 left-1/2 -translate-x-1/2 bg-bg px-3 font-mono text-[10px] text-accent-primary">Experience</span>
         </div>
         <Experience />
         <div className="border-t border-border max-w-content mx-auto relative">
-          <span className="absolute -top-2.5 left-1/2 -translate-x-1/2 bg-bg px-3 font-mono text-[10px] text-muted">Contact</span>
+          <span className="absolute -top-2.5 left-1/2 -translate-x-1/2 bg-bg px-3 font-mono text-[10px] text-accent-primary">Contact</span>
         </div>
         <Contact />
       </main>

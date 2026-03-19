@@ -37,7 +37,7 @@ export default function Experience() {
           transition={{ duration: 0.45 }}
           className="mb-12"
         >
-          <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted mb-3">04</div>
+          <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-accent-primary mb-3">04</div>
           <h2 className="text-section font-heading italic">
             Where <em className="font-editorial">I&apos;ve Been</em>
           </h2>

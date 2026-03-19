@@ -18,7 +18,7 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.55 }}
         >
-          <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted mb-4">
+          <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-accent-primary mb-4">
             00 — Abstract
           </div>
           <h1 className="text-hero font-heading italic leading-[0.92] mb-6">
@@ -41,7 +41,7 @@ export default function Hero() {
             </a>
             <a
               href="#contact"
-              className="group font-mono text-[11px] uppercase tracking-[0.12em] text-muted hover:text-ink transition-colors inline-flex items-center gap-2"
+              className="group font-mono text-[11px] uppercase tracking-[0.12em] text-accent-primary hover:text-ink transition-colors inline-flex items-center gap-2"
             >
               Get in touch <span className="transition-transform group-hover:translate-x-1">→</span>
             </a>
@@ -55,14 +55,17 @@ export default function Hero() {
           className="relative flex justify-center"
         >
           <svg
-            viewBox="0 0 280 280"
-            className="absolute w-[280px] h-[280px] animate-[spin_20s_linear_infinite] pointer-events-none"
+            viewBox="0 0 352 352"
+            className="absolute w-[352px] h-[352px] animate-[spin_20s_linear_infinite] pointer-events-none"
             aria-hidden="true"
           >
             <defs>
-              <path id="circle-path-next" d="M140,140 m-100,0 a100,100 0 1,1 200,0 a100,100 0 1,1 -200,0" />
+              <path id="circle-path-next" d="M176,176 m-140,0 a140,140 0 1,1 280,0 a140,140 0 1,1 -280,0" />
             </defs>
-            <text className="font-mono text-[10.5px] fill-muted tracking-[3.5px]">
+            <text
+              className="font-mono text-[11.5px] tracking-[3.2px]"
+              style={{ fill: 'rgba(200,75,47,0.9)' }}
+            >
               <textPath href="#circle-path-next">
                 FULL-STACK AI ENGINEER ✦ LAHORE PAKISTAN ✦ OPEN SOURCE ✦ RAG PIPELINES ✦ LLM OPTIMIZATION ✦
               </textPath>

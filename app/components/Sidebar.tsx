@@ -91,7 +91,7 @@ export default function Sidebar() {
         {/* Footer - CV Download */}
         <div className="p-4 border-t border-border">
           <a
-            href={`${process.env.NODE_ENV === 'production' ? '/portfolio' : ''}/Munim Ahmad Resume.pdf`}
+            href={`${process.env.NODE_ENV === 'production' ? '/portfolio' : ''}/munim-ahmad-resume.pdf`}
             download
             className="block w-full px-4 py-2 text-center font-mono text-[11px] bg-ink text-bg hover:bg-accent-primary transition-colors"
           >

@@ -5,7 +5,10 @@ import { useEffect, useRef } from 'react';
 export default function Cursor() {
   const dotRef = useRef<HTMLDivElement>(null);
   const trailRef = useRef<HTMLDivElement>(null);
-  const timeoutRef = useRef<number | null>(null);
+  const rafRef = useRef<number | null>(null);
+  const targetRef = useRef({ x: 0, y: 0 });
+  const trailPosRef = useRef({ x: 0, y: 0 });
+  const initializedRef = useRef(false);
 
   useEffect(() => {
     const dot = dotRef.current;
@@ -14,19 +17,27 @@ export default function Cursor() {
       return;
     }
 
+    const animateTrail = () => {
+      const target = targetRef.current;
+      const trailPos = trailPosRef.current;
+      trailPos.x += (target.x - trailPos.x) * 0.16;
+      trailPos.y += (target.y - trailPos.y) * 0.16;
+      trail.style.left = `${trailPos.x}px`;
+      trail.style.top = `${trailPos.y}px`;
+      rafRef.current = window.requestAnimationFrame(animateTrail);
+    };
+
     const onMove = (event: MouseEvent) => {
       const { clientX, clientY } = event;
+      targetRef.current = { x: clientX, y: clientY };
       dot.style.left = `${clientX}px`;
       dot.style.top = `${clientY}px`;
-
-      if (timeoutRef.current) {
-        window.clearTimeout(timeoutRef.current);
-      }
-
-      timeoutRef.current = window.setTimeout(() => {
+      if (!initializedRef.current) {
+        trailPosRef.current = { x: clientX, y: clientY };
         trail.style.left = `${clientX}px`;
         trail.style.top = `${clientY}px`;
-      }, 80);
+        initializedRef.current = true;
+      }
     };
 
     const interactiveSelector = 'a, button, [role="button"], article';
@@ -41,6 +52,7 @@ export default function Cursor() {
     });
 
     window.addEventListener('mousemove', onMove);
+    rafRef.current = window.requestAnimationFrame(animateTrail);
 
     return () => {
       window.removeEventListener('mousemove', onMove);
@@ -48,8 +60,8 @@ export default function Cursor() {
         element.removeEventListener('mouseenter', onEnter);
         element.removeEventListener('mouseleave', onLeave);
       });
-      if (timeoutRef.current) {
-        window.clearTimeout(timeoutRef.current);
+      if (rafRef.current) {
+        window.cancelAnimationFrame(rafRef.current);
       }
     };
   }, []);
