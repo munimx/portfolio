@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { DM_Serif_Display, IBM_Plex_Sans, JetBrains_Mono, Newsreader } from 'next/font/google';
+import { DM_Serif_Display, IBM_Plex_Sans, JetBrains_Mono } from 'next/font/google';
 import './globals.css';
 
 const dmSerif = DM_Serif_Display({
@@ -24,14 +24,6 @@ const jetbrains = JetBrains_Mono({
   display: 'swap',
 });
 
-const newsreader = Newsreader({
-  weight: ['400', '600'],
-  style: ['normal', 'italic'],
-  subsets: ['latin'],
-  variable: '--font-newsreader',
-  display: 'swap',
-});
-
 export const metadata: Metadata = {
   title: 'Munim Ahmad — Full-Stack AI Engineer',
   description: 'Portfolio showcasing AI engineering work, including Recallm semantic cache and DocuChat PDF assistant.',
@@ -50,7 +42,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${dmSerif.variable} ${ibmPlex.variable} ${jetbrains.variable} ${newsreader.variable}`}>
+    <html lang="en" className={`${dmSerif.variable} ${ibmPlex.variable} ${jetbrains.variable}`}>
       <body>
         {children}
       </body>
