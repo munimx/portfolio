@@ -369,6 +369,60 @@
       position: relative;
     }
     
+    /* Project cards */
+    .project-card {
+      cursor: pointer;
+    }
+    
+    .project-card:hover {
+      background: var(--surface) !important;
+      transform: translateY(-2px);
+    }
+    
+    .project-card:hover > div:last-child {
+      width: 100%;
+    }
+    
+    .project-card:hover .card-content .mono:first-child {
+      color: var(--accent) !important;
+    }
+    
+    .project-card:hover .card-content h3,
+    .project-card:hover .card-content h4 {
+      color: var(--accent) !important;
+    }
+    
+    .project-card .card-content span.mono {
+      cursor: pointer;
+    }
+    
+    .project-card:hover .card-content span.mono {
+      border-color: var(--accent) !important;
+      color: var(--ink) !important;
+    }
+    
+    .project-card .card-content a:hover {
+      color: var(--accent) !important;
+      gap: 14px !important;
+    }
+    
+    .project-card .card-content a:hover span {
+      transform: translate(4px, -4px);
+    }
+    
+    /* Projects grid responsive */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-lg);
+    }
+    
+    .card-featured {
+      grid-column: span 2;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+    
     /* ===================================
        COMPONENT FOUNDATIONS
        =================================== */
@@ -543,6 +597,20 @@
       .scroll-hint {
         display: none !important;
       }
+      
+      /* Projects section mobile */
+      .projects-grid {
+        grid-template-columns: 1fr !important;
+      }
+      
+      .card-featured {
+        grid-column: span 1 !important;
+        grid-template-columns: 1fr !important;
+      }
+      
+      .card-visual {
+        display: none !important;
+      }
     }
   </style>
 </head>
@@ -652,12 +720,156 @@
     <!-- SECTION: Publications (Projects) -->
     <section id="publications" class="section-publications">
       <div class="container">
-        <div style="margin-bottom: var(--space-xl);">
-          <span class="mono" style="color: var(--accent);">01</span>
+        <div class="section-header reveal" style="margin-bottom: var(--space-xl);">
+          <span class="section-num">01</span>
           <h2>Selected <em>Projects</em></h2>
         </div>
-        <!-- Project cards will go here -->
-        <div style="color: var(--muted);">Projects section coming soon...</div>
+        
+        <!-- Projects grid -->
+        <div class="projects-grid" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-lg);">
+          
+          <!-- Featured Project 1: Recallm -->
+          <article class="project-card card-featured reveal" style="grid-column: span 2; display: grid; grid-template-columns: 1fr 1fr; background: var(--bg); border: 1px solid var(--border); position: relative; overflow: hidden; transition: all var(--trans-base);">
+            
+            <!-- Code preview visual -->
+            <div class="card-visual" style="background: var(--surface); display: flex; align-items: center; justify-content: center; padding: var(--space-lg); position: relative;">
+              <div class="code-preview" style="font-family: var(--font-mono); font-size: 11px; color: var(--muted); line-height: 1.8; background: rgba(26,23,20,0.04); border: 1px solid var(--border); padding: var(--space-md); width: 90%; max-width: 400px;">
+                <div style="display: flex; gap: 12px;"><span style="color: var(--border); user-select: none;">1</span><span style="color: var(--accent);">from</span> recallm <span style="color: var(--accent);">import</span> SemanticCache</div>
+                <div style="display: flex; gap: 12px;"><span style="color: var(--border); user-select: none;">2</span></div>
+                <div style="display: flex; gap: 12px;"><span style="color: var(--border); user-select: none;">3</span><span style="color: var(--border); font-style: italic;"># semantic cache for LLMs</span></div>
+                <div style="display: flex; gap: 12px;"><span style="color: var(--border); user-select: none;">4</span>cache = SemanticCache(threshold=<span style="color: #7A8B5A;">0.85</span>)</div>
+                <div style="display: flex; gap: 12px;"><span style="color: var(--border); user-select: none;">5</span></div>
+                <div style="display: flex; gap: 12px;"><span style="color: var(--border); user-select: none;">6</span><span style="color: var(--accent);">@cache</span>.wrap</div>
+                <div style="display: flex; gap: 12px;"><span style="color: var(--border); user-select: none;">7</span><span style="color: var(--accent);">def</span> ask(prompt):</div>
+                <div style="display: flex; gap: 12px;"><span style="color: var(--border); user-select: none;">8</span>&nbsp;&nbsp;<span style="color: var(--accent);">return</span> llm.complete(prompt)</div>
+                <div style="display: flex; gap: 12px;"><span style="color: var(--border); user-select: none;">9</span></div>
+                <div style="display: flex; gap: 12px;"><span style="color: var(--border); user-select: none;">10</span><span style="color: var(--border); font-style: italic;"># 40-70% cost reduction ✓</span></div>
+              </div>
+            </div>
+            
+            <!-- Card content -->
+            <div class="card-content" style="padding: var(--space-lg); display: flex; flex-direction: column; justify-content: space-between;">
+              <div>
+                <div class="mono" style="font-size: 11px; color: var(--border); margin-bottom: var(--space-md); transition: color var(--trans-base);">01 — Featured</div>
+                <h3 style="font-family: var(--font-body); font-weight: 700; font-size: 32px; letter-spacing: -0.02em; margin-bottom: var(--space-sm); line-height: 1.1; transition: color var(--trans-base);">Recallm</h3>
+                <p style="font-size: 15px; color: var(--muted); line-height: 1.7; margin-bottom: var(--space-md);">
+                  Production-ready Python library for semantic caching of LLM API calls. Reduces costs by 40-70% through local ONNX embeddings and cosine similarity search. Features Redis/in-memory storage, Prometheus metrics, async support, and sub-10ms latency overhead.
+                </p>
+                
+                <!-- Tech tags -->
+                <div style="display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: var(--space-md);">
+                  <span class="mono" style="font-size: 9px; color: var(--muted); background: var(--surface); padding: 4px 10px; border: 1px solid var(--border); transition: all var(--trans-base);">Python</span>
+                  <span class="mono" style="font-size: 9px; color: var(--muted); background: var(--surface); padding: 4px 10px; border: 1px solid var(--border); transition: all var(--trans-base);">ONNX Runtime</span>
+                  <span class="mono" style="font-size: 9px; color: var(--muted); background: var(--surface); padding: 4px 10px; border: 1px solid var(--border); transition: all var(--trans-base);">FastEmbed</span>
+                  <span class="mono" style="font-size: 9px; color: var(--muted); background: var(--surface); padding: 4px 10px; border: 1px solid var(--border); transition: all var(--trans-base);">Redis</span>
+                  <span class="mono" style="font-size: 9px; color: var(--muted); background: var(--surface); padding: 4px 10px; border: 1px solid var(--border); transition: all var(--trans-base);">Prometheus</span>
+                </div>
+              </div>
+              
+              <!-- Links -->
+              <div style="display: flex; gap: var(--space-md);">
+                <a href="https://recallm.dev" target="_blank" rel="noopener noreferrer" class="mono" style="font-size: 11px; color: var(--muted); display: flex; align-items: center; gap: 8px; transition: all var(--trans-base);">
+                  Visit Site <span style="transition: transform var(--trans-base);">↗</span>
+                </a>
+                <a href="https://github.com/munimx/recallm" target="_blank" rel="noopener noreferrer" class="mono" style="font-size: 11px; color: var(--muted); display: flex; align-items: center; gap: 8px; transition: all var(--trans-base);">
+                  GitHub <span style="transition: transform var(--trans-base);">↗</span>
+                </a>
+              </div>
+            </div>
+            
+            <!-- Accent bar on hover -->
+            <div style="position: absolute; bottom: 0; left: 0; width: 0; height: 3px; background: var(--accent); transition: width var(--trans-slow);"></div>
+          </article>
+          
+          <!-- Featured Project 2: DocuChat -->
+          <article class="project-card card-featured reveal" style="grid-column: span 2; display: grid; grid-template-columns: 1fr 1fr; background: var(--bg); border: 1px solid var(--border); position: relative; overflow: hidden; transition: all var(--trans-base);">
+            
+            <!-- App interface mockup placeholder -->
+            <div class="card-visual" style="background: var(--surface); display: flex; align-items: center; justify-content: center; padding: var(--space-lg); position: relative;">
+              <div style="text-align: center; color: var(--muted);">
+                <div style="font-size: 64px; margin-bottom: var(--space-sm);">📄</div>
+                <div class="mono" style="font-size: 11px;">Cross-Platform Desktop App</div>
+                <div style="margin-top: var(--space-sm); display: flex; gap: var(--space-sm); justify-content: center;">
+                  <span style="width: 32px; height: 32px; background: rgba(26,23,20,0.06); border-radius: var(--radius-full); display: inline-block;"></span>
+                  <span style="width: 32px; height: 32px; background: rgba(26,23,20,0.06); border-radius: var(--radius-full); display: inline-block;"></span>
+                  <span style="width: 32px; height: 32px; background: rgba(26,23,20,0.06); border-radius: var(--radius-full); display: inline-block;"></span>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Card content -->
+            <div class="card-content" style="padding: var(--space-lg); display: flex; flex-direction: column; justify-content: space-between;">
+              <div>
+                <div class="mono" style="font-size: 11px; color: var(--border); margin-bottom: var(--space-md); transition: color var(--trans-base);">02 — Featured</div>
+                <h3 style="font-family: var(--font-body); font-weight: 700; font-size: 32px; letter-spacing: -0.02em; margin-bottom: var(--space-sm); line-height: 1.1; transition: color var(--trans-base);">DocuChat</h3>
+                <p style="font-size: 15px; color: var(--muted); line-height: 1.7; margin-bottom: var(--space-md);">
+                  Cross-platform desktop application for intelligent Q&A over PDF documents using RAG architecture. Native apps for Windows/macOS/Linux with multi-LLM support, vector storage (ChromaDB/Pinecone), source citations, and offline-first design.
+                </p>
+                
+                <!-- Tech tags -->
+                <div style="display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: var(--space-md);">
+                  <span class="mono" style="font-size: 9px; color: var(--muted); background: var(--surface); padding: 4px 10px; border: 1px solid var(--border); transition: all var(--trans-base);">Electron</span>
+                  <span class="mono" style="font-size: 9px; color: var(--muted); background: var(--surface); padding: 4px 10px; border: 1px solid var(--border); transition: all var(--trans-base);">React</span>
+                  <span class="mono" style="font-size: 9px; color: var(--muted); background: var(--surface); padding: 4px 10px; border: 1px solid var(--border); transition: all var(--trans-base);">TypeScript</span>
+                  <span class="mono" style="font-size: 9px; color: var(--muted); background: var(--surface); padding: 4px 10px; border: 1px solid var(--border); transition: all var(--trans-base);">LangChain</span>
+                  <span class="mono" style="font-size: 9px; color: var(--muted); background: var(--surface); padding: 4px 10px; border: 1px solid var(--border); transition: all var(--trans-base);">ChromaDB</span>
+                </div>
+              </div>
+              
+              <!-- Links -->
+              <div style="display: flex; gap: var(--space-md);">
+                <a href="https://github.com/munimx/DocuChat" target="_blank" rel="noopener noreferrer" class="mono" style="font-size: 11px; color: var(--muted); display: flex; align-items: center; gap: 8px; transition: all var(--trans-base);">
+                  GitHub <span style="transition: transform var(--trans-base);">↗</span>
+                </a>
+                <a href="https://github.com/munimx/DocuChat/releases" target="_blank" rel="noopener noreferrer" class="mono" style="font-size: 11px; color: var(--muted); display: flex; align-items: center; gap: 8px; transition: all var(--trans-base);">
+                  Download <span style="transition: transform var(--trans-base);">↗</span>
+                </a>
+              </div>
+            </div>
+            
+            <!-- Accent bar on hover -->
+            <div style="position: absolute; bottom: 0; left: 0; width: 0; height: 3px; background: var(--accent); transition: width var(--trans-slow);"></div>
+          </article>
+          
+          <!-- Supporting Project 1: Endshift RAG -->
+          <article class="project-card reveal" style="background: var(--bg); border: 1px solid var(--border); padding: var(--space-lg); position: relative; overflow: hidden; transition: all var(--trans-base);">
+            <div class="mono" style="font-size: 11px; color: var(--border); margin-bottom: var(--space-md); transition: color var(--trans-base);">03</div>
+            <h4 style="font-family: var(--font-body); font-weight: 700; font-size: 24px; letter-spacing: -0.02em; margin-bottom: var(--space-sm); line-height: 1.1; transition: color var(--trans-base);">Production RAG Pipeline</h4>
+            <p style="font-size: 14px; color: var(--muted); line-height: 1.7; margin-bottom: var(--space-md);">
+              Architected NL→SQL RAG pipeline at Endshift serving 500+ queries daily with 98% uptime. Reduced Mistral-7B latency by 65% through batching, 4-bit quantization, and ChromaDB semantic search.
+            </p>
+            
+            <!-- Tech tags -->
+            <div style="display: flex; flex-wrap: wrap; gap: 6px;">
+              <span class="mono" style="font-size: 9px; color: var(--muted); background: var(--surface); padding: 4px 10px; border: 1px solid var(--border); transition: all var(--trans-base);">Mistral-7B</span>
+              <span class="mono" style="font-size: 9px; color: var(--muted); background: var(--surface); padding: 4px 10px; border: 1px solid var(--border); transition: all var(--trans-base);">.NET</span>
+              <span class="mono" style="font-size: 9px; color: var(--muted); background: var(--surface); padding: 4px 10px; border: 1px solid var(--border); transition: all var(--trans-base);">AWS</span>
+              <span class="mono" style="font-size: 9px; color: var(--muted); background: var(--surface); padding: 4px 10px; border: 1px solid var(--border); transition: all var(--trans-base);">Docker</span>
+            </div>
+            
+            <div style="position: absolute; bottom: 0; left: 0; width: 0; height: 3px; background: var(--accent); transition: width var(--trans-slow);"></div>
+          </article>
+          
+          <!-- Supporting Project 2: LLM Fine-Tuning -->
+          <article class="project-card reveal" style="background: var(--bg); border: 1px solid var(--border); padding: var(--space-lg); position: relative; overflow: hidden; transition: all var(--trans-base);">
+            <div class="mono" style="font-size: 11px; color: var(--border); margin-bottom: var(--space-md); transition: color var(--trans-base);">04</div>
+            <h4 style="font-family: var(--font-body); font-weight: 700; font-size: 24px; letter-spacing: -0.02em; margin-bottom: var(--space-sm); line-height: 1.1; transition: color var(--trans-base);">LLM Fine-Tuning Pipeline</h4>
+            <p style="font-size: 14px; color: var(--muted); line-height: 1.7; margin-bottom: var(--space-md);">
+              Fine-tuned Llama 2 (7B parameters) using LoRA/QLoRA techniques. Built comprehensive evaluation framework with BLEU/ROUGE metrics and MLOps pipeline for versioning and deployment.
+            </p>
+            
+            <!-- Tech tags -->
+            <div style="display: flex; flex-wrap: wrap; gap: 6px;">
+              <span class="mono" style="font-size: 9px; color: var(--muted); background: var(--surface); padding: 4px 10px; border: 1px solid var(--border); transition: all var(--trans-base);">PyTorch</span>
+              <span class="mono" style="font-size: 9px; color: var(--muted); background: var(--surface); padding: 4px 10px; border: 1px solid var(--border); transition: all var(--trans-base);">Hugging Face</span>
+              <span class="mono" style="font-size: 9px; color: var(--muted); background: var(--surface); padding: 4px 10px; border: 1px solid var(--border); transition: all var(--trans-base);">LoRA/QLoRA</span>
+              <span class="mono" style="font-size: 9px; color: var(--muted); background: var(--surface); padding: 4px 10px; border: 1px solid var(--border); transition: all var(--trans-base);">MLflow</span>
+            </div>
+            
+            <div style="position: absolute; bottom: 0; left: 0; width: 0; height: 3px; background: var(--accent); transition: width var(--trans-slow);"></div>
+          </article>
+          
+        </div>
       </div>
     </section>
     
