@@ -8,28 +8,24 @@ const contactRows = [
     label: 'Email',
     value: 'munimahmad2@gmail.com',
     href: 'mailto:munimahmad2@gmail.com',
-    mono: false,
   },
   {
     id: '02',
     label: 'GitHub',
     value: 'github.com/munimx',
     href: 'https://github.com/munimx',
-    mono: true,
   },
   {
     id: '03',
     label: 'LinkedIn',
     value: 'linkedin.com/in/munimahmad',
     href: 'https://linkedin.com/in/munimahmad',
-    mono: true,
   },
   {
     id: '04',
     label: 'Location',
     value: 'Lahore, Pakistan',
     href: '#contact',
-    mono: true,
   },
 ] as const;
 
@@ -52,7 +48,9 @@ export default function Contact() {
           <div className="md:col-span-4">
             <p className="font-mono text-[10px] uppercase tracking-[0.12em] text-muted leading-[1.9]">
               Formal correspondence regarding AI engineering opportunities, infrastructure collaboration, or product
-              research. Typical response window: &lt; 24h.
+              research.
+              <br />
+              Typical response window: &lt; 24h.
             </p>
           </div>
 
@@ -68,13 +66,7 @@ export default function Contact() {
                       <span className="text-accent-primary">{row.id}</span>
                       <span>{row.label}</span>
                     </div>
-                    <div
-                      className={
-                        row.mono
-                          ? 'font-mono text-[13px] md:text-[14px] text-ink tracking-[0.02em]'
-                          : 'font-heading italic text-[22px] md:text-[26px] text-ink tracking-[-0.01em] group-hover:text-accent-primary transition-colors'
-                      }
-                    >
+                    <div className="font-heading italic text-[22px] md:text-[26px] text-ink tracking-[-0.01em] group-hover:text-accent-primary transition-colors">
                       {row.value}
                     </div>
                     <span className="justify-self-start sm:justify-self-end text-accent-primary text-[12px]">↗</span>
@@ -104,7 +96,7 @@ export default function Contact() {
             </div>
 
             <div className="mt-12 flex flex-col sm:flex-row sm:items-end gap-4">
-              <span className="font-heading italic text-[16px] text-muted">Ref: Full professional history (PDF)</span>
+              <span className="font-heading italic text-[16px] text-muted">Ref: CV / Resume (PDF)</span>
               <a
                 href={`${process.env.NODE_ENV === 'production' ? '/portfolio' : ''}/munim-ahmad-resume.pdf`}
                 download
