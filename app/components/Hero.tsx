@@ -69,14 +69,14 @@ export default function Hero() {
           className="relative flex items-center justify-center min-h-[420px]"
         >
           <svg
-            viewBox="0 0 440 440"
-            className="w-[360px] h-[360px] md:w-[400px] md:h-[400px] animate-[spin_24s_linear_infinite] pointer-events-none"
+            viewBox="0 0 480 480"
+            className="w-[380px] h-[380px] md:w-[420px] md:h-[420px] overflow-visible animate-[spin_24s_linear_infinite] pointer-events-none"
             aria-hidden="true"
           >
             <defs>
-              <path id="hero-ring-path" d="M220,220 m-170,0 a170,170 0 1,1 340,0 a170,170 0 1,1 -340,0" />
+              <path id="hero-ring-path" d="M240,240 m-184,0 a184,184 0 1,1 368,0 a184,184 0 1,1 -368,0" />
             </defs>
-            <text className="font-mono text-[12px] tracking-[3.6px]" style={{ fill: '#C84B2F' }}>
+            <text className="font-mono text-[13px] tracking-[4px]" style={{ fill: '#C84B2F' }}>
               <textPath href="#hero-ring-path">
                 FULL-STACK AI ENGINEER ✦ LAHORE PAKISTAN ✦ OPEN SOURCE ✦ RAG PIPELINES ✦ LLM OPTIMIZATION ✦
               </textPath>
