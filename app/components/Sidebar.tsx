@@ -92,10 +92,13 @@ export default function Sidebar() {
         </nav>
 
         {/* Footer Utilities */}
-        <div className="px-5 py-6 border-t border-border/80">
-          <div className="font-mono text-[9px] text-muted uppercase tracking-[0.1em] leading-[1.6]">
-            Location: Lahore_PK
-          </div>
+        <div className="px-5 h-24 border-t border-border/80 flex items-center">
+          <button
+            type="button"
+            className="w-full px-3 py-2 border border-border font-mono text-[10px] uppercase tracking-[0.12em] text-ink hover:text-accent-primary hover:border-accent-primary transition-colors"
+          >
+            Toggle Theme
+          </button>
         </div>
       </aside>
 

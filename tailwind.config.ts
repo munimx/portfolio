@@ -23,8 +23,8 @@ module.exports = {
         editorial: ['var(--font-newsreader)', 'serif'],
       },
       spacing: {
-        // Stitch-accurate spacing
-        'sidebar': '160px',  // NOT 240px!
+        // Editorial rail spacing
+        'sidebar': '192px',
         'nav': '72px',
       },
       maxWidth: {

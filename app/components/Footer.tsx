@@ -1,8 +1,8 @@
 export default function Footer() {
   return (
-    <footer className="border-t border-border bg-bg py-10 px-8">
-      <div className="max-w-content mx-auto">
-        <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+    <footer className="border-t border-border bg-bg px-8 h-24">
+      <div className="max-w-content mx-auto h-full">
+        <div className="flex h-full flex-col md:flex-row justify-between items-center gap-4">
           <div className="font-mono text-[10px] text-muted">
             Munim Ahmad — Lahore, Pakistan — 2026
           </div>
