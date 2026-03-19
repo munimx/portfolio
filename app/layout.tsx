@@ -51,7 +51,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${dmSerif.variable} ${ibmPlex.variable} ${jetbrains.variable} ${newsreader.variable}`}>
-      <body>{children}</body>
+      <body>
+        {children}
+      </body>
     </html>
   );
 }
