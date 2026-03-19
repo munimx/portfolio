@@ -1,13 +1,106 @@
 'use client';
 
+import type { ReactNode } from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 
-function Tag({ children }: { children: string }) {
+type ProjectLink = {
+  label: string;
+  href: string;
+};
+
+type ProjectMetric = {
+  label: string;
+  value: string;
+};
+
+type ProjectRecord = {
+  index: string;
+  title: string;
+  subtitle: string;
+  context: string;
+  method: string;
+  outcomes: string[];
+  stack: string[];
+  links: ProjectLink[];
+  metrics?: ProjectMetric[];
+  visualType: 'recallm' | 'docuchat';
+};
+
+const projectRecords: ProjectRecord[] = [
+  {
+    index: '01',
+    title: 'Recallm',
+    subtitle: 'Semantic caching for OpenAI-compatible clients.',
+    context:
+      'Exact-match caches miss paraphrased prompts, so repetitive intent still triggers full-price LLM calls.',
+    method:
+      'Wrap the completion method once, embed prompts locally with ONNX, and perform cosine similarity search before forwarding misses.',
+    outcomes: [
+      'Sub-10ms lookup overhead on CPU.',
+      '0 external services required (in-process architecture).',
+      '40–70% reduction potential on repetitive FAQ/support workloads.',
+    ],
+    stack: ['Python', 'ONNX Runtime', 'FastEmbed', 'Redis', 'Prometheus'],
+    links: [
+      { label: 'Visit recallm.dev ↗', href: 'https://recallm.dev' },
+      { label: 'GitHub repository ↗', href: 'https://github.com/munimx/recallm' },
+    ],
+    metrics: [
+      { label: 'Lookup', value: '<10ms' },
+      { label: 'Infra', value: 'In-process' },
+      { label: 'FAQ hit-rate', value: '40–70%' },
+    ],
+    visualType: 'recallm',
+  },
+  {
+    index: '02',
+    title: 'DocuChat',
+    subtitle: 'Desktop RAG workspace for document-grounded Q&A.',
+    context:
+      'Research and support workflows need cited answers across long PDFs without context-switching to browser tools.',
+    method:
+      'Electron + React shell with retrieval pipelines over chunked documents, multi-LLM options, and local-first interaction patterns.',
+    outcomes: [
+      'Cross-platform desktop distribution with installable releases.',
+      'Focused citation-driven answers over user-provided PDFs.',
+      'Workflow designed for iterative reading and follow-up querying.',
+    ],
+    stack: ['Electron', 'React', 'TypeScript', 'LangChain', 'ChromaDB'],
+    links: [
+      { label: 'GitHub repository ↗', href: 'https://github.com/munimx/DocuChat' },
+      { label: 'Release downloads ↗', href: 'https://github.com/munimx/DocuChat/releases' },
+    ],
+    visualType: 'docuchat',
+  },
+];
+
+function StackTag({ children }: { children: string }) {
   return (
-    <span className="font-mono text-[9px] text-muted bg-ink/[0.03] px-2.5 py-1 border border-border">
+    <span className="font-mono text-[9px] text-muted bg-ink/[0.03] px-2.5 py-1 border border-border/80">
       {children}
     </span>
+  );
+}
+
+function DetailRow({
+  label,
+  children,
+  isLast,
+}: {
+  label: string;
+  children: ReactNode;
+  isLast?: boolean;
+}) {
+  return (
+    <div
+      className={`grid grid-cols-1 md:grid-cols-[128px_1fr] gap-2 md:gap-4 px-6 py-4 ${
+        isLast ? '' : 'border-b border-border/80'
+      }`}
+    >
+      <div className="font-mono text-[10px] uppercase tracking-[0.12em] text-border">{label}</div>
+      <div className="text-[14px] text-muted leading-[1.7]">{children}</div>
+    </div>
   );
 }
 
@@ -30,138 +123,114 @@ export default function Projects() {
           </h2>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <article className="md:col-span-2 grid grid-cols-1 lg:grid-cols-[1fr_1.2fr] border border-border bg-bg overflow-hidden group">
-            <div className="bg-ink/[0.03] p-8 flex items-center">
-              <div className="w-full border border-border bg-bg p-6">
-                <div className="font-mono text-[10px] uppercase tracking-[0.16em] text-accent-primary mb-5">
-                  Publication Abstract
-                </div>
-                <div>
-                  <div className="font-mono text-[10px] uppercase tracking-[0.08em] text-border mb-1">Problem</div>
-                  <p className="text-[13px] text-muted leading-[1.65]">
-                    Exact-match caches miss paraphrases, so repeated intent still pays full API cost.
-                  </p>
-                </div>
-                <div className="my-4 h-px bg-border" />
-                <div>
-                  <div className="font-mono text-[10px] uppercase tracking-[0.08em] text-border mb-1">Method</div>
-                  <p className="text-[13px] text-muted leading-[1.65]">
-                    Wrap the client once, embed prompts locally (~20MB ONNX model), then run cosine search above a
-                    similarity threshold.
-                  </p>
-                </div>
-                <div className="my-4 h-px bg-border" />
-                <div>
-                  <div className="font-mono text-[10px] uppercase tracking-[0.08em] text-border mb-1">Results</div>
-                  <p className="text-[13px] text-muted leading-[1.65]">
-                    <span className="text-accent-primary">{'<10ms'}</span> lookup overhead,{' '}
-                    <span className="text-accent-primary">0 external services</span>, and 40–70% savings on repetitive
-                    FAQ/support traffic.
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div className="p-8 flex flex-col justify-between">
-              <div>
-                <div className="font-mono text-[11px] text-border mb-4">01 — Featured</div>
-                <h3 className="text-card font-body font-bold tracking-[-0.02em] leading-[1.1] mb-3">Recallm</h3>
-                <p className="text-[15px] text-muted leading-[1.7] mb-4">
-                  Ask once, recall forever. A semantic cache for OpenAI-compatible clients that returns instant
-                  responses for similar prompts without introducing proxy layers or infrastructure overhead.
-                </p>
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-5">
-                  <div className="border border-border p-3 bg-ink/[0.02]">
-                    <div className="font-mono text-[9px] text-border uppercase tracking-[0.08em] mb-1">Lookup</div>
-                    <div className="font-body text-[19px] leading-none text-accent-primary">{'<10ms'}</div>
+        <div className="space-y-8">
+          {projectRecords.map((project) => (
+            <article key={project.title} className="border border-border bg-bg overflow-hidden">
+              <div className="grid grid-cols-1 xl:grid-cols-[220px_1fr]">
+                <aside className="border-b xl:border-b-0 xl:border-r border-border/80 bg-ink/[0.02] p-6 flex flex-col justify-between gap-8">
+                  <div>
+                    <div className="font-mono text-[10px] uppercase tracking-[0.16em] text-accent-primary mb-3">
+                      Publication {project.index}
+                    </div>
+                    <h3 className="font-body font-bold text-[30px] tracking-[-0.02em] leading-[1.05] mb-2">
+                      {project.title}
+                    </h3>
+                    <p className="text-[13px] text-muted leading-[1.7]">{project.subtitle}</p>
                   </div>
-                  <div className="border border-border p-3 bg-ink/[0.02]">
-                    <div className="font-mono text-[9px] text-border uppercase tracking-[0.08em] mb-1">Infra</div>
-                    <div className="font-body text-[19px] leading-none">In-process</div>
-                  </div>
-                  <div className="border border-border p-3 bg-ink/[0.02]">
-                    <div className="font-mono text-[9px] text-border uppercase tracking-[0.08em] mb-1">FAQ Savings</div>
-                    <div className="font-body text-[19px] leading-none text-accent-primary">40–70%</div>
-                  </div>
-                </div>
-                <div className="flex flex-wrap gap-1.5 mb-5">
-                  <Tag>Python</Tag>
-                  <Tag>ONNX Runtime</Tag>
-                  <Tag>FastEmbed</Tag>
-                  <Tag>Redis</Tag>
-                  <Tag>Prometheus</Tag>
-                </div>
-              </div>
-              <div className="flex gap-6">
-                <a
-                  href="https://recallm.dev"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="font-mono text-[11px] text-muted hover:text-ink transition-colors"
-                >
-                  Visit Site ↗
-                </a>
-                <a
-                  href="https://github.com/munimx/recallm"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="font-mono text-[11px] text-muted hover:text-ink transition-colors"
-                >
-                  GitHub ↗
-                </a>
-              </div>
-            </div>
-          </article>
 
-          <article className="md:col-span-2 grid grid-cols-1 lg:grid-cols-[1fr_1.2fr] border border-border bg-bg overflow-hidden group">
-            <div className="bg-ink/[0.03] p-8 flex items-center justify-center">
-              <div className="relative w-full max-w-[320px] aspect-square border border-border bg-bg p-6 flex items-center justify-center overflow-hidden">
-                <Image
-                  src={`${staticBasePath}/assets/projects/docuchat-logo.png`}
-                  alt="DocuChat logo"
-                  width={1080}
-                  height={1080}
-                  className="w-full h-full object-contain docuchat-logo-tint relative z-[1]"
-                />
-                <div className="absolute inset-0 bg-accent-primary/[0.06] mix-blend-multiply pointer-events-none" />
-              </div>
-            </div>
-            <div className="p-8 flex flex-col justify-between">
-              <div>
-                <div className="font-mono text-[11px] text-border mb-4">02 — Featured</div>
-                <h3 className="text-card font-body font-bold tracking-[-0.02em] leading-[1.1] mb-3">DocuChat</h3>
-                <p className="text-[15px] text-muted leading-[1.7] mb-4">
-                  Cross-platform desktop app for PDF-grounded Q&A using a local-first RAG workflow, multi-LLM support,
-                  and an Electron shell designed for day-to-day research usage.
-                </p>
-                <div className="flex flex-wrap gap-1.5 mb-5">
-                  <Tag>Electron</Tag>
-                  <Tag>React</Tag>
-                  <Tag>TypeScript</Tag>
-                  <Tag>LangChain</Tag>
-                  <Tag>ChromaDB</Tag>
+                  <div className="space-y-2">
+                    {project.links.map((link) => (
+                      <a
+                        key={link.href}
+                        href={link.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="block font-mono text-[10px] uppercase tracking-[0.08em] text-accent-primary hover:text-ink transition-colors"
+                      >
+                        {link.label}
+                      </a>
+                    ))}
+                  </div>
+                </aside>
+
+                <div className="grid grid-cols-1 lg:grid-cols-[1fr_320px]">
+                  <div>
+                    <DetailRow label="Context">{project.context}</DetailRow>
+                    <DetailRow label="Method">{project.method}</DetailRow>
+                    <DetailRow label="Outcomes">
+                      <ul className="space-y-1.5">
+                        {project.outcomes.map((item) => (
+                          <li key={item} className="flex items-start gap-2">
+                            <span className="mt-2.5 h-1 w-1 rounded-full bg-accent-primary shrink-0" />
+                            <span>{item}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </DetailRow>
+                    <DetailRow label="Stack" isLast>
+                      <div className="flex flex-wrap gap-1.5">
+                        {project.stack.map((item) => (
+                          <StackTag key={item}>{item}</StackTag>
+                        ))}
+                      </div>
+                    </DetailRow>
+                  </div>
+
+                  <div className="border-t lg:border-t-0 lg:border-l border-border/80 p-6 bg-ink/[0.015]">
+                    {project.visualType === 'recallm' && project.metrics ? (
+                      <>
+                        <div className="font-mono text-[10px] uppercase tracking-[0.12em] text-accent-primary mb-4">
+                          Workflow
+                        </div>
+                        <div className="border border-border/80 bg-bg p-2">
+                          <Image
+                            src={`${staticBasePath}/assets/projects/recallm-workflow.svg`}
+                            alt="Recallm semantic cache decision workflow"
+                            width={680}
+                            height={806}
+                            className="w-full h-auto"
+                          />
+                        </div>
+                        <div className="grid grid-cols-1 gap-px bg-border border border-border mt-4">
+                          {project.metrics.map((metric) => (
+                            <div key={metric.label} className="bg-bg px-3 py-2.5">
+                              <div className="font-mono text-[9px] text-border uppercase tracking-[0.08em] mb-1">
+                                {metric.label}
+                              </div>
+                              <div className="font-body text-[19px] leading-none text-ink">{metric.value}</div>
+                            </div>
+                          ))}
+                        </div>
+                        <p className="font-mono text-[10px] text-muted leading-[1.75] mt-4">
+                          Intercept → similarity check → cache hit/miss routing, aligned to the public Recallm
+                          architecture docs.
+                        </p>
+                      </>
+                    ) : (
+                      <>
+                        <div className="font-mono text-[10px] uppercase tracking-[0.12em] text-accent-primary mb-4">
+                          Visual Identity
+                        </div>
+                        <div className="relative w-full aspect-square border border-border/80 bg-bg p-6 flex items-center justify-center overflow-hidden">
+                          <Image
+                            src={`${staticBasePath}/assets/projects/docuchat-logo.png`}
+                            alt="DocuChat logo"
+                            width={1080}
+                            height={1080}
+                            className="w-full h-full object-contain docuchat-logo-tint relative z-[1]"
+                          />
+                          <div className="absolute inset-0 bg-accent-primary/[0.06] mix-blend-multiply pointer-events-none" />
+                        </div>
+                        <p className="font-mono text-[10px] text-muted leading-[1.75] mt-4">
+                          Recolored to the portfolio palette while preserving the original mark geometry.
+                        </p>
+                      </>
+                    )}
+                  </div>
                 </div>
               </div>
-              <div className="flex gap-6">
-                <a
-                  href="https://github.com/munimx/DocuChat"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="font-mono text-[11px] text-muted hover:text-ink transition-colors"
-                >
-                  GitHub ↗
-                </a>
-                <a
-                  href="https://github.com/munimx/DocuChat/releases"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="font-mono text-[11px] text-muted hover:text-ink transition-colors"
-                >
-                  Download ↗
-                </a>
-              </div>
-            </div>
-          </article>
+            </article>
+          ))}
         </div>
       </div>
     </section>

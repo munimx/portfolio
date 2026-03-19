@@ -52,11 +52,11 @@ export default function Hero() {
           initial={false}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.15 }}
-          className="relative flex justify-center"
+          className="flex flex-col items-center gap-8"
         >
           <svg
             viewBox="0 0 352 352"
-            className="absolute w-[352px] h-[352px] animate-[spin_20s_linear_infinite] pointer-events-none"
+            className="w-[240px] h-[240px] animate-[spin_20s_linear_infinite] pointer-events-none"
             aria-hidden="true"
           >
             <defs>
@@ -64,7 +64,7 @@ export default function Hero() {
             </defs>
             <text
               className="font-mono text-[11.5px] tracking-[3.2px]"
-              style={{ fill: 'rgba(200,75,47,0.9)' }}
+              style={{ fill: '#C84B2F' }}
             >
               <textPath href="#circle-path-next">
                 FULL-STACK AI ENGINEER ✦ LAHORE PAKISTAN ✦ OPEN SOURCE ✦ RAG PIPELINES ✦ LLM OPTIMIZATION ✦
@@ -72,7 +72,7 @@ export default function Hero() {
             </text>
           </svg>
 
-          <div className="relative z-[1] w-[320px] grid grid-cols-2 gap-px bg-border border border-border">
+          <div className="w-[320px] grid grid-cols-2 gap-px bg-border border border-border">
             {stats.map((stat) => (
               <div key={stat.label} className="bg-bg p-7">
                 <div className="font-heading italic text-[42px] leading-none mb-1.5">{stat.value}</div>

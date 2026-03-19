@@ -60,43 +60,47 @@ export default function Sidebar() {
           ${isMobileOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}`}
       >
         {/* Header */}
-        <div className="p-4 border-b border-border">
-          <div className="font-mono text-[10px] text-muted uppercase tracking-wider">
-            Portfolio
+        <div className="px-5 py-5 border-b border-border/80">
+          <div className="font-mono text-[9px] text-accent-primary uppercase tracking-[0.14em]">
+            Editorial Portfolio
           </div>
-          <div className="font-mono text-[11px] mt-1">
-            v0.2.0
+          <div className="font-heading italic text-[20px] leading-none mt-2">
+            MA
           </div>
+          <div className="font-mono text-[9px] text-muted uppercase tracking-[0.1em] mt-2">v0.3.0</div>
         </div>
 
         {/* Navigation */}
-        <nav className="flex-1 py-8">
+        <nav className="flex-1 py-6">
           {sections.map((section) => (
             <Link
               key={section.id}
               href={section.href}
               onClick={() => setIsMobileOpen(false)}
-              className={`flex items-center gap-3 px-4 py-3 font-mono text-[11px] border-l-2 transition-colors
+              className={`flex items-center gap-2.5 px-5 py-3 font-mono text-[10px] uppercase tracking-[0.1em] border-l-2 transition-colors
                 ${activeSection === section.id 
-                  ? 'border-accent-primary text-ink' 
-                  : 'border-transparent text-muted hover:text-ink hover:border-muted'
+                  ? 'border-accent-primary text-ink bg-ink/[0.03]' 
+                  : 'border-transparent text-muted hover:text-ink hover:border-border'
                 }`}
             >
-              <span className="text-[10px]">{section.id}</span>
+              <span className="text-[9px] text-accent-primary">{section.id}</span>
               <span>{section.label}</span>
             </Link>
           ))}
         </nav>
 
         {/* Footer - CV Download */}
-        <div className="p-4 border-t border-border">
+        <div className="px-5 py-5 border-t border-border/80">
           <a
             href={`${process.env.NODE_ENV === 'production' ? '/portfolio' : ''}/munim-ahmad-resume.pdf`}
             download
-            className="block w-full px-4 py-2 text-center font-mono text-[11px] bg-ink text-bg hover:bg-accent-primary transition-colors"
+            className="block w-full px-3 py-2 text-center font-mono text-[10px] uppercase tracking-[0.1em] bg-ink text-bg hover:bg-accent-primary transition-colors"
           >
             Download CV
           </a>
+          <div className="font-mono text-[9px] text-muted uppercase tracking-[0.08em] text-center mt-3">
+            Lahore, Pakistan
+          </div>
         </div>
       </aside>
 
