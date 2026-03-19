@@ -55,19 +55,19 @@ export default function Sidebar() {
 
       {/* Sidebar */}
       <aside
-        className={`fixed top-nav left-0 h-[calc(100vh-theme(spacing.nav))] w-sidebar bg-bg border-r border-border z-40 flex flex-col
+        className={`fixed top-nav left-0 h-[calc(100vh-theme(spacing.nav))] w-sidebar bg-ink/[0.015] border-r border-border z-40 flex flex-col
           lg:translate-x-0 transition-transform duration-300
           ${isMobileOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}`}
       >
         {/* Header */}
-        <div className="px-5 py-5 border-b border-border/80">
+        <div className="px-5 py-6 border-b border-border/80">
           <div className="font-mono text-[9px] text-accent-primary uppercase tracking-[0.14em]">
             Editorial Portfolio
           </div>
-          <div className="font-heading italic text-[20px] leading-none mt-2">
+          <div className="font-heading italic text-[22px] leading-none mt-2 tracking-[-0.02em]">
             MA
           </div>
-          <div className="font-mono text-[9px] text-muted uppercase tracking-[0.1em] mt-2">v0.3.0</div>
+          <div className="font-mono text-[9px] text-muted uppercase tracking-[0.1em] mt-2">Editorial Index</div>
         </div>
 
         {/* Navigation */}
@@ -77,10 +77,10 @@ export default function Sidebar() {
               key={section.id}
               href={section.href}
               onClick={() => setIsMobileOpen(false)}
-              className={`flex items-center gap-2.5 px-5 py-3 font-mono text-[10px] uppercase tracking-[0.1em] border-l-2 transition-colors
+              className={`flex items-center gap-2.5 px-5 py-3.5 font-mono text-[10px] uppercase tracking-[0.1em] border-l-2 transition-colors
                 ${activeSection === section.id 
-                  ? 'border-accent-primary text-ink bg-ink/[0.03]' 
-                  : 'border-transparent text-muted hover:text-ink hover:border-border'
+                  ? 'border-accent-primary text-ink bg-bg' 
+                  : 'border-transparent text-muted hover:text-ink hover:bg-bg/70'
                 }`}
             >
               <span className="text-[9px] text-accent-primary">{section.id}</span>
@@ -90,7 +90,7 @@ export default function Sidebar() {
         </nav>
 
         {/* Footer - CV Download */}
-        <div className="px-5 py-5 border-t border-border/80">
+        <div className="px-5 py-6 border-t border-border/80">
           <a
             href={`${process.env.NODE_ENV === 'production' ? '/portfolio' : ''}/munim-ahmad-resume.pdf`}
             download
@@ -98,7 +98,7 @@ export default function Sidebar() {
           >
             Download CV
           </a>
-          <div className="font-mono text-[9px] text-muted uppercase tracking-[0.08em] text-center mt-3">
+          <div className="font-mono text-[9px] text-muted uppercase tracking-[0.08em] text-center mt-3 leading-[1.6]">
             Lahore, Pakistan
           </div>
         </div>

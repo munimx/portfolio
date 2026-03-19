@@ -11,6 +11,8 @@ const stats = [
 ];
 
 const ROTATE_EVERY_MS = 2500;
+const RING_TEXT =
+  'FULL-STACK AI ENGINEER ✦ LAHORE PAKISTAN ✦ OPEN SOURCE ✦ RAG PIPELINES ✦ LLM OPTIMIZATION ✦ ';
 
 export default function Hero() {
   const [activeStatIndex, setActiveStatIndex] = useState(0);
@@ -66,7 +68,7 @@ export default function Hero() {
           initial={false}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.15 }}
-          className="relative flex items-center justify-center min-h-[420px]"
+          className="relative flex items-center justify-center min-h-[440px]"
         >
           <svg
             viewBox="0 0 480 480"
@@ -77,14 +79,14 @@ export default function Hero() {
               <path id="hero-ring-path" d="M240,240 m-184,0 a184,184 0 1,1 368,0 a184,184 0 1,1 -368,0" />
             </defs>
             <text className="font-mono text-[13px] tracking-[4px]" style={{ fill: '#C84B2F' }}>
-              <textPath href="#hero-ring-path">
-                FULL-STACK AI ENGINEER ✦ LAHORE PAKISTAN ✦ OPEN SOURCE ✦ RAG PIPELINES ✦ LLM OPTIMIZATION ✦
+              <textPath href="#hero-ring-path" startOffset="0%">
+                {`${RING_TEXT}${RING_TEXT}`}
               </textPath>
             </text>
           </svg>
 
-          <div className="absolute inset-0 flex items-center justify-center px-6">
-            <div className="w-[250px] min-h-[190px] border border-border/70 bg-bg/95 backdrop-blur-[1px] px-6 py-7 text-center">
+          <div className="absolute inset-0 flex items-center justify-center px-6 pointer-events-none">
+            <div className="w-[250px] min-h-[190px] px-2 text-center">
               <div className="font-mono text-[10px] uppercase tracking-[0.14em] text-accent-primary mb-4">
                 Key Metric
               </div>

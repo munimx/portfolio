@@ -119,3 +119,8 @@ body::before {
     display: none;
   }
 }
+
+.workflow-svg-compact {
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+}

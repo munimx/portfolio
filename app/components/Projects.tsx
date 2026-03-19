@@ -75,13 +75,13 @@ function EntryVisual({ visual, staticBasePath }: { visual: ProjectEntry['visual'
   if (visual === 'workflow') {
     return (
       <figure className="mt-8">
-        <div className="border border-border/60 bg-bg p-2">
+        <div className="border border-border/60 bg-bg p-1.5">
           <Image
             src={`${staticBasePath}/assets/projects/recallm-workflow.svg`}
             alt="Recallm semantic cache decision workflow"
             width={680}
             height={806}
-            className="w-full h-auto"
+            className="w-full h-auto max-h-[520px] object-contain workflow-svg-compact"
           />
         </div>
         <figcaption className="font-mono text-[10px] text-muted leading-[1.75] mt-4">
@@ -137,7 +137,7 @@ export default function Projects() {
                   <div className="font-mono text-[10px] uppercase tracking-[0.16em] text-accent-primary mb-3">
                     Publication {project.index}
                   </div>
-                  <h3 className="font-body font-bold text-[clamp(30px,4.4vw,44px)] tracking-[-0.02em] leading-[1.05]">
+                  <h3 className="font-body font-bold text-[clamp(28px,4vw,44px)] tracking-[-0.02em] leading-[1.08] break-words hyphens-auto max-w-[16ch]">
                     {project.title}
                   </h3>
                   <p className="text-[15px] text-muted leading-[1.75] mt-4 max-w-[60ch]">{project.subtitle}</p>
