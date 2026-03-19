@@ -1,127 +1,172 @@
-# Munim Ahmad - Portfolio
+# Munim Ahmad — Portfolio
 
-A modern, glassmorphism-styled portfolio website built with Next.js 14, TypeScript, and Tailwind CSS.
+A personal portfolio website showcasing my work as a Full-Stack AI Engineer. Built with vanilla HTML/CSS/JavaScript and featuring a hybrid editorial design that blends warm, artisanal aesthetics with structured research themes.
+
+## 🎨 Design Philosophy
+
+**Editorial Hybrid**: Combines the warmth of handcrafted design with the precision of academic research portfolios.
+
+- **Typography**: DM Serif Display (headlines) + IBM Plex Sans (body) + JetBrains Mono (code/meta)
+- **Color Palette**: Warm parchment backgrounds (#F4F1EA) with rust/editorial red accents (#C8331F)
+- **Interactive**: Custom cursor with trail effect, grain texture overlay, scroll reveal animations
+- **Navigation**: Dual system - top navigation bar + left sidebar (Stitch-inspired)
 
 ## 🚀 Features
 
-- ✨ Glassmorphism design with smooth animations
-- 📱 Fully responsive (mobile, tablet, desktop)
-- ⚡ Optimized performance with Next.js static export
-- 🎨 Framer Motion animations
-- 🔍 SEO optimized with meta tags and Open Graph
-- 🌐 Deployed on GitHub Pages
-- ♿ Accessible design
+- ✨ **Custom Design System** - CSS custom properties for consistent theming
+- 🎯 **Dual Navigation** - Top bar for branding + left sidebar for sections
+- 📱 **Fully Responsive** - Mobile-first design with breakpoints at 768px and 1024px
+- ⚡ **Performance Optimized** - Vanilla JS, no frameworks, <3s load time
+- 🎨 **Interactive Elements** - Custom cursor, scroll reveals, hover effects
+- ♿ **Accessible** - Semantic HTML, ARIA labels, keyboard navigation
+- 📊 **Real Data** - All projects and experience verified from resume and GitHub
 
-## 🛠️ Tech Stack
-
-- **Framework**: Next.js 14 (App Router)
-- **Language**: TypeScript
-- **Styling**: Tailwind CSS
-- **Animations**: Framer Motion
-- **Icons**: React Icons
-- **Deployment**: GitHub Pages
-
-## 📦 Project Structure
+## 📁 Structure
 
 ```
 portfolio/
-├── app/
-│   ├── components/
-│   │   ├── Hero.tsx
-│   │   ├── About.tsx
-│   │   ├── Experience.tsx
-│   │   ├── Projects.tsx
-│   │   ├── Contact.tsx
-│   │   └── ui/
-│   │       ├── GlassCard.tsx
-│   │       ├── Button.tsx
-│   │       ├── Navbar.tsx
-│   │       └── Footer.tsx
-│   ├── layout.tsx
-│   ├── page.tsx
-│   └── globals.css
-├── lib/
-│   └── data/
-│       ├── projects.ts
-│       ├── experience.ts
-│       └── skills.ts
-└── public/
+├── index.html              # Main portfolio (new version)
+├── portfolio.html          # Original design reference
+├── public/
+│   ├── assets/
+│   │   ├── home/          # Hero section assets
+│   │   ├── projects/      # Project screenshots
+│   │   ├── about/         # About section assets
+│   │   └── contact/       # Contact assets
+│   ├── icons/
+│   └── images/
+├── Munim Ahmad Resume.pdf  # Resume download
+├── README.md
+└── DEPLOYMENT.md
 ```
 
-## 🚦 Getting Started
+## 🛠️ Tech Stack
 
-### Prerequisites
+- **HTML5** - Semantic markup
+- **CSS3** - Custom properties, Grid, Flexbox, animations
+- **JavaScript** - Vanilla ES6+ (cursor, scroll reveals, navigation)
+- **Design Inspiration** - Stitch AI (dual navigation, editorial layouts)
+- **Fonts** - Google Fonts (DM Serif Display, IBM Plex Sans, JetBrains Mono, Newsreader)
 
-- Node.js 20.x or higher
-- npm
+## 🔗 Sections
 
-### Installation
+1. **Abstract** - Hero section with name, tagline, rotating text, stats grid
+2. **Publications** - Featured projects (Recallm, DocuChat) + supporting work
+3. **Methodology** - About, bio, tech stack, approach
+4. **Experience** - Timeline of work history and education
+5. **Appendix** - Contact information and social links
 
-1. Clone the repository:
+## 🎯 Featured Projects
+
+### Recallm
+- **URL**: [recallm.dev](https://recallm.dev)
+- **Description**: Semantic cache for LLMs, reduces API costs by 40-70%
+- **Tech**: Python, ONNX Runtime, FastEmbed, Redis, Prometheus
+
+### DocuChat
+- **URL**: [github.com/munimx/DocuChat](https://github.com/munimx/DocuChat)
+- **Description**: Cross-platform AI PDF assistant with RAG
+- **Tech**: Electron, React, TypeScript, LangChain, ChromaDB
+
+## 🚦 Local Development
+
+1. **Clone the repository**
 ```bash
 git clone https://github.com/munimx/portfolio.git
 cd portfolio
 ```
 
-2. Install dependencies:
+2. **Start a local server**
 ```bash
-npm install
+# Python 3
+python3 -m http.server 8000
+
+# Or use any static server
+npx serve
 ```
 
-3. Run the development server:
-```bash
-npm run dev
+3. **Open in browser**
+```
+http://localhost:8000/index.html
 ```
 
-4. Open [http://localhost:3000](http://localhost:3000) in your browser.
+## 🌐 Deployment
 
-## 🏗️ Build
+The portfolio is deployed on GitHub Pages at [munimx.github.io/portfolio](https://munimx.github.io/portfolio/)
 
-Build for production:
+### Deploy Updates
+
 ```bash
-npm run build
+git add .
+git commit -m "Update portfolio"
+git push origin main
 ```
 
-The static files will be generated in the `out` directory.
-
-## 🚀 Deployment
-
-The portfolio automatically deploys to GitHub Pages when changes are pushed to the main branch.
-
-### Manual Deployment
-
-1. Ensure GitHub Pages is enabled in repository settings
-2. Set source to "GitHub Actions"
-3. Push to main branch to trigger deployment
+GitHub Pages automatically serves `index.html` from the main branch.
 
 ## 📝 Customization
 
-### Update Personal Information
+### Update Colors
+Edit CSS custom properties in `index.html`:
+```css
+:root {
+  --bg: #F4F1EA;
+  --accent: #C8331F;
+  --ink: #1A1714;
+  /* ... */
+}
+```
 
-Edit the data files in `lib/data/`:
-- `projects.ts` - Your projects
-- `experience.ts` - Work experience and education
-- `skills.ts` - Your skills
+### Update Content
+All content is inline in `index.html`:
+- Hero stats: Line ~130
+- Projects: Line ~250
+- About bio: Line ~450
+- Experience: Line ~550
+- Contact links: Line ~650
 
-### Update Social Links
+### Update Projects
+Edit the project cards in the Publications section with your own:
+- Title, description, tech tags
+- Links (GitHub, live site)
+- Code previews (optional)
 
-Edit `app/components/ui/Footer.tsx` and `app/components/Contact.tsx` to update social media links.
+## 🎨 Design Credits
 
-### Colors
+- **Stitch AI** - Navigation and layout inspiration
+- **Original Design** - Warm editorial aesthetic from portfolio.html
+- **Fonts** - Google Fonts
+- **Icons** - Unicode symbols and custom SVG
 
-Modify the color scheme in `tailwind.config.ts` and `app/globals.css`.
+## 📊 Performance
+
+- **Load Time**: <3 seconds
+- **Bundle Size**: ~50KB HTML+CSS+JS (inline)
+- **Images**: Optimized JPEGs from Stitch
+- **Fonts**: Loaded from Google Fonts CDN
+
+## ♿ Accessibility
+
+- Semantic HTML5 structure
+- ARIA labels on navigation
+- Keyboard navigation support
+- Color contrast WCAG AA compliant
+- Custom cursor disabled on touch devices
 
 ## 📄 License
 
-This project is open source and available under the MIT License.
+Open source and available under the MIT License.
 
 ## 🙏 Acknowledgments
 
-- Design inspired by modern glassmorphism trends
-- Built with [Next.js](https://nextjs.org/)
-- Animated with [Framer Motion](https://www.framer.com/motion/)
-- Icons from [React Icons](https://react-icons.github.io/react-icons/)
+- Design inspired by Stitch AI's editorial research themes
+- Built as a personal project to showcase AI engineering work
+- All project data verified from resume and GitHub repositories
 
 ---
 
-**Portfolio for the LEGEND Munim Ahmad :P**
+**Munim Ahmad** — Full-Stack AI Engineer  
+📧 munimahmad2@gmail.com  
+🔗 [github.com/munimx](https://github.com/munimx)  
+🌐 [recallm.dev](https://recallm.dev)
+
