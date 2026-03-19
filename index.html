@@ -331,10 +331,9 @@
     
     /* ===================================
        COMPONENT FOUNDATIONS
-       (Detailed components will be added in next phase)
        =================================== */
     
-    /* Placeholder for nav */
+    /* Navigation */
     nav {
       position: fixed;
       top: 0;
@@ -352,6 +351,141 @@
       background: rgba(244, 241, 234, 0.92);
       backdrop-filter: blur(12px);
     }
+    
+    .nav-logo {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: 22px;
+      color: var(--ink);
+      letter-spacing: -0.02em;
+      transition: color var(--trans-base);
+    }
+    
+    .nav-logo:hover {
+      color: var(--accent);
+    }
+    
+    .nav-links {
+      display: flex;
+      gap: 36px;
+      list-style: none;
+      align-items: center;
+    }
+    
+    .nav-links a {
+      color: var(--muted);
+      position: relative;
+      font-size: 12px;
+      transition: color var(--trans-base);
+    }
+    
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--accent);
+      transition: width var(--trans-base);
+    }
+    
+    .nav-links a:hover {
+      color: var(--ink);
+    }
+    
+    .nav-links a:hover::after,
+    .nav-links a.active::after {
+      width: 100%;
+    }
+    
+    .nav-links a.active {
+      color: var(--accent);
+    }
+    
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--ink);
+      font-size: 24px;
+      cursor: pointer;
+    }
+    
+    /* Dividers */
+    .divider {
+      border-top: 1px solid var(--border);
+      margin: 0 var(--space-lg);
+      position: relative;
+    }
+    
+    .divider-label {
+      position: absolute;
+      top: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--bg);
+      padding: 0 var(--space-sm);
+      color: var(--muted);
+      font-size: 10px;
+    }
+    
+    /* Section headers */
+    .section-header {
+      margin-bottom: var(--space-xl);
+    }
+    
+    .section-num {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--accent);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: var(--space-sm);
+    }
+    
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: var(--space-lg);
+      text-align: center;
+    }
+    
+    /* ===================================
+       RESPONSIVE DESIGN
+       =================================== */
+    
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: var(--nav-height);
+        left: 0;
+        right: 0;
+        background: var(--bg);
+        border-bottom: 1px solid var(--border);
+        padding: var(--space-md);
+        gap: var(--space-md);
+      }
+      
+      .nav-links.open {
+        display: flex;
+      }
+      
+      .mobile-menu-btn {
+        display: block;
+      }
+      
+      h1 {
+        font-size: clamp(42px, 10vw, 64px);
+      }
+      
+      .divider {
+        margin: 0 var(--space-md);
+      }
+    }
   </style>
 </head>
 <body>
@@ -360,21 +494,108 @@
   <div class="cursor" id="cursor"></div>
   <div class="cursor-trail" id="cursorTrail"></div>
   
-  <!-- Navigation (will be built in Phase 3) -->
+  <!-- Navigation -->
   <nav id="nav">
-    <div class="container">
-      <!-- Nav content here -->
+    <div class="container" style="display: flex; justify-content: space-between; align-items: center; height: var(--nav-height);">
+      <a href="#home" class="nav-logo" style="font-family: var(--font-display); font-style: italic; font-size: 22px; color: var(--ink); letter-spacing: -0.02em;">MA</a>
+      
+      <ul class="nav-links" style="display: flex; gap: 36px; list-style: none; align-items: center;">
+        <li><a href="#abstract" class="mono" style="color: var(--muted); position: relative; font-size: 12px;">Abstract</a></li>
+        <li><a href="#publications" class="mono" style="color: var(--muted); position: relative; font-size: 12px;">Publications</a></li>
+        <li><a href="#methodology" class="mono" style="color: var(--muted); position: relative; font-size: 12px;">Methodology</a></li>
+        <li><a href="#appendix" class="mono" style="color: var(--muted); position: relative; font-size: 12px;">Appendix</a></li>
+      </ul>
+      
+      <!-- Mobile menu button (will be styled later) -->
+      <button class="mobile-menu-btn" style="display: none; background: none; border: none; color: var(--ink); font-size: 24px;">☰</button>
     </div>
   </nav>
   
-  <!-- Main content sections (will be built in Phase 4) -->
+  <!-- Main content sections -->
   <main>
-    <!-- Sections will be added here -->
+    
+    <!-- SECTION: Abstract (Home/Hero) -->
+    <section id="abstract" class="section-abstract" style="min-height: 100vh; padding-top: calc(var(--nav-height) + var(--space-xl));">
+      <div class="container">
+        <div style="max-width: 800px;">
+          <div class="mono" style="color: var(--accent); margin-bottom: var(--space-md);">— Full-Stack AI Engineer</div>
+          <h1>Munim<br><span style="font-style: normal; color: var(--accent);">Ahmad.</span></h1>
+          <p style="font-size: 18px; color: var(--muted); max-width: 520px; margin-bottom: var(--space-lg);">
+            Building production-ready AI applications from model development to deployment. 
+            Specialized in <em>RAG systems, LLM optimization,</em> and scalable backend architecture.
+          </p>
+          <!-- Placeholder for hero content, stats, etc. -->
+        </div>
+      </div>
+    </section>
+    
+    <!-- Divider -->
+    <div class="divider" style="border-top: 1px solid var(--border); margin: 0 var(--space-lg); position: relative;">
+      <span class="divider-label mono" style="position: absolute; top: -10px; left: 50%; transform: translateX(-50%); background: var(--bg); padding: 0 var(--space-sm); color: var(--muted); font-size: 10px;">Selected Work</span>
+    </div>
+    
+    <!-- SECTION: Publications (Projects) -->
+    <section id="publications" class="section-publications">
+      <div class="container">
+        <div style="margin-bottom: var(--space-xl);">
+          <span class="mono" style="color: var(--accent);">01</span>
+          <h2>Selected <em>Projects</em></h2>
+        </div>
+        <!-- Project cards will go here -->
+        <div style="color: var(--muted);">Projects section coming soon...</div>
+      </div>
+    </section>
+    
+    <!-- Divider -->
+    <div class="divider" style="border-top: 1px solid var(--border); margin: 0 var(--space-lg); position: relative;">
+      <span class="divider-label mono" style="position: absolute; top: -10px; left: 50%; transform: translateX(-50%); background: var(--bg); padding: 0 var(--space-sm); color: var(--muted); font-size: 10px;">Methodology</span>
+    </div>
+    
+    <!-- SECTION: Methodology (About) -->
+    <section id="methodology" class="section-methodology">
+      <div class="container">
+        <div style="margin-bottom: var(--space-xl);">
+          <span class="mono" style="color: var(--accent);">02</span>
+          <h2>About & <em>Approach</em></h2>
+        </div>
+        <!-- About content will go here -->
+        <div style="color: var(--muted);">About section coming soon...</div>
+      </div>
+    </section>
+    
+    <!-- Divider -->
+    <div class="divider" style="border-top: 1px solid var(--border); margin: 0 var(--space-lg); position: relative;">
+      <span class="divider-label mono" style="position: absolute; top: -10px; left: 50%; transform: translateX(-50%); background: var(--bg); padding: 0 var(--space-sm); color: var(--muted); font-size: 10px;">Contact</span>
+    </div>
+    
+    <!-- SECTION: Appendix (Contact) -->
+    <section id="appendix" class="section-appendix">
+      <div class="container">
+        <div style="margin-bottom: var(--space-xl);">
+          <span class="mono" style="color: var(--accent);">03</span>
+          <h2>Let's <em>Connect</em></h2>
+        </div>
+        <!-- Contact content will go here -->
+        <div style="color: var(--muted);">Contact section coming soon...</div>
+      </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer style="border-top: 1px solid var(--border); padding: var(--space-lg); text-align: center;">
+      <div class="container">
+        <div class="mono" style="color: var(--muted); font-size: 10px;">
+          Munim Ahmad — Lahore, Pakistan — 2025
+        </div>
+      </div>
+    </footer>
+    
   </main>
   
   <!-- Basic cursor movement script -->
   <script>
-    // Custom cursor
+    // ===================================
+    // CUSTOM CURSOR SYSTEM
+    // ===================================
     const cursor = document.getElementById('cursor');
     const trail = document.getElementById('cursorTrail');
     let mx = 0, my = 0;
@@ -393,15 +614,117 @@
     });
     
     // Hover effects for interactive elements
-    document.querySelectorAll('a, button').forEach(el => {
-      el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
-      el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
-    });
+    const updateHoverElements = () => {
+      document.querySelectorAll('a, button, .project-card, .contact-link').forEach(el => {
+        el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
+        el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+      });
+    };
+    
+    updateHoverElements();
+    
+    // ===================================
+    // STICKY NAVIGATION & SCROLL DETECTION
+    // ===================================
+    const nav = document.getElementById('nav');
+    const navLinks = document.querySelectorAll('.nav-links a');
+    const sections = document.querySelectorAll('section[id]');
     
     // Sticky nav on scroll
-    const nav = document.getElementById('nav');
     window.addEventListener('scroll', () => {
       nav.classList.toggle('scrolled', window.scrollY > 40);
+      
+      // Active section detection
+      let current = '';
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+        if (window.scrollY >= sectionTop - 200) {
+          current = section.getAttribute('id');
+        }
+      });
+      
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === '#' + current) {
+          link.classList.add('active');
+        }
+      });
+    });
+    
+    // ===================================
+    // SMOOTH SCROLL NAVIGATION
+    // ===================================
+    navLinks.forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const targetId = link.getAttribute('href');
+        const targetSection = document.querySelector(targetId);
+        
+        if (targetSection) {
+          const offsetTop = targetSection.offsetTop - 72; // Account for nav height
+          window.scrollTo({
+            top: offsetTop,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+    
+    // ===================================
+    // MOBILE MENU TOGGLE
+    // ===================================
+    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+    const navLinksContainer = document.querySelector('.nav-links');
+    
+    if (mobileMenuBtn) {
+      mobileMenuBtn.addEventListener('click', () => {
+        navLinksContainer.classList.toggle('open');
+        mobileMenuBtn.textContent = navLinksContainer.classList.contains('open') ? '✕' : '☰';
+      });
+      
+      // Close mobile menu when link is clicked
+      navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          navLinksContainer.classList.remove('open');
+          mobileMenuBtn.textContent = '☰';
+        });
+      });
+    }
+    
+    // ===================================
+    // SCROLL REVEAL ANIMATIONS
+    // ===================================
+    const observerOptions = {
+      threshold: 0.15,
+      rootMargin: '0px 0px -50px 0px'
+    };
+    
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          // Only observe once for most elements
+          if (!entry.target.classList.contains('divider')) {
+            observer.unobserve(entry.target);
+          }
+        }
+      });
+    }, observerOptions);
+    
+    // Observe all reveal elements
+    document.querySelectorAll('.reveal, .divider').forEach(el => {
+      observer.observe(el);
+    });
+    
+    // Initial trigger for elements already in view
+    window.addEventListener('load', () => {
+      document.querySelectorAll('.reveal').forEach(el => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight * 0.85) {
+          el.classList.add('visible');
+        }
+      });
     });
   </script>
   
