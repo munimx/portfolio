@@ -427,7 +427,7 @@
        COMPONENT FOUNDATIONS
        =================================== */
     
-    /* Top Navigation */
+    /* Navigation */
     nav {
       position: fixed;
       top: 0;
@@ -436,72 +436,14 @@
       z-index: var(--z-nav);
       height: var(--nav-height);
       background: var(--bg);
-      border-bottom: 1px solid var(--border);
+      border-bottom: 1px solid transparent;
       transition: border-color var(--trans-base), background var(--trans-base);
     }
     
     nav.scrolled {
-      background: rgba(244, 241, 234, 0.95);
+      border-bottom-color: var(--border);
+      background: rgba(244, 241, 234, 0.92);
       backdrop-filter: blur(12px);
-    }
-    
-    /* Sidebar Navigation */
-    .sidebar {
-      position: fixed;
-      left: 0;
-      top: var(--nav-height);
-      height: calc(100vh - var(--nav-height));
-      width: 240px;
-      background: var(--bg);
-      border-right: 1px solid var(--border);
-      padding: var(--space-lg) 0;
-      z-index: 50;
-      overflow-y: auto;
-      transition: transform var(--trans-base);
-    }
-    
-    .sidebar-header {
-      padding: 0 var(--space-md);
-      margin-bottom: var(--space-lg);
-    }
-    
-    .sidebar-nav {
-      display: flex;
-      flex-direction: column;
-    }
-    
-    .sidebar-nav a {
-      display: flex;
-      align-items: center;
-      gap: var(--space-sm);
-      padding: var(--space-sm) var(--space-md);
-      color: var(--muted);
-      transition: all var(--trans-base);
-      border-left: 2px solid transparent;
-    }
-    
-    .sidebar-nav a:hover {
-      color: var(--ink);
-      background: var(--surface);
-      transform: translateX(2px);
-    }
-    
-    .sidebar-nav a.active {
-      color: var(--accent);
-      border-left-color: var(--accent);
-      background: rgba(200, 51, 31, 0.05);
-    }
-    
-    .sidebar-footer {
-      padding: var(--space-md);
-      border-top: 1px solid var(--border);
-      margin-top: auto;
-    }
-    
-    /* Main content with sidebar offset */
-    main {
-      margin-left: 240px;
-      padding-top: var(--nav-height);
     }
     
     .nav-logo {
@@ -669,15 +611,6 @@
       .card-visual {
         display: none !important;
       }
-      
-      /* About section mobile */
-      .about-content > div:first-child {
-        grid-template-columns: 1fr !important;
-      }
-      
-      .about-sidebar {
-        position: static !important;
-      }
     }
   </style>
 </head>
@@ -687,60 +620,28 @@
   <div class="cursor" id="cursor"></div>
   <div class="cursor-trail" id="cursorTrail"></div>
   
-  <!-- Top Navigation -->
+  <!-- Navigation -->
   <nav id="nav">
-    <div style="display: flex; justify-content: space-between; align-items: center; height: var(--nav-height); padding: 0 var(--space-lg); max-width: 100%;">
-      <a href="#abstract" class="nav-logo">Munim Ahmad</a>
+    <div class="container" style="display: flex; justify-content: space-between; align-items: center; height: var(--nav-height);">
+      <a href="#home" class="nav-logo" style="font-family: var(--font-display); font-style: italic; font-size: 22px; color: var(--ink); letter-spacing: -0.02em;">MA</a>
       
-      <div style="display: flex; align-items: center; gap: var(--space-lg);">
-        <div class="mono" style="color: var(--muted); font-size: 10px;">Full-Stack AI Engineer</div>
-        <a href="#appendix" class="mono" style="color: var(--ink); border: 1px solid var(--border); padding: 8px 20px; transition: all var(--trans-base);">Contact</a>
-      </div>
+      <ul class="nav-links" style="display: flex; gap: 36px; list-style: none; align-items: center;">
+        <li><a href="#abstract" class="mono" style="color: var(--muted); position: relative; font-size: 12px;">Abstract</a></li>
+        <li><a href="#publications" class="mono" style="color: var(--muted); position: relative; font-size: 12px;">Publications</a></li>
+        <li><a href="#methodology" class="mono" style="color: var(--muted); position: relative; font-size: 12px;">Methodology</a></li>
+        <li><a href="#appendix" class="mono" style="color: var(--muted); position: relative; font-size: 12px;">Appendix</a></li>
+      </ul>
       
-      <button class="mobile-menu-btn" style="display: none;">☰</button>
+      <!-- Mobile menu button (will be styled later) -->
+      <button class="mobile-menu-btn" style="display: none; background: none; border: none; color: var(--ink); font-size: 24px;">☰</button>
     </div>
   </nav>
-  
-  <!-- Sidebar Navigation -->
-  <aside class="sidebar">
-    <div class="sidebar-header">
-      <div style="font-family: var(--font-editorial); font-size: 16px; font-style: italic; color: var(--ink); margin-bottom: 4px;">Portfolio</div>
-      <div class="mono" style="font-size: 10px; color: var(--muted);">v2.0 — 2025</div>
-    </div>
-    
-    <nav class="sidebar-nav">
-      <a href="#abstract" class="mono active" style="font-size: 11px;">
-        <span>01</span>
-        <span>Abstract</span>
-      </a>
-      <a href="#publications" class="mono" style="font-size: 11px;">
-        <span>02</span>
-        <span>Projects</span>
-      </a>
-      <a href="#methodology" class="mono" style="font-size: 11px;">
-        <span>03</span>
-        <span>About</span>
-      </a>
-      <a href="#experience" class="mono" style="font-size: 11px;">
-        <span>04</span>
-        <span>Experience</span>
-      </a>
-      <a href="#appendix" class="mono" style="font-size: 11px;">
-        <span>05</span>
-        <span>Contact</span>
-      </a>
-    </nav>
-    
-    <div class="sidebar-footer">
-      <a href="/Munim Ahmad Resume.pdf" target="_blank" class="mono" style="display: block; text-align: center; border: 1px solid var(--border); padding: 10px; font-size: 10px; transition: all var(--trans-base);">Download CV</a>
-    </div>
-  </aside>
   
   <!-- Main content sections -->
   <main>
     
     <!-- SECTION: Abstract (Home/Hero) -->
-    <section id="abstract" class="section-abstract" style="min-height: 100vh; padding: var(--space-xl); display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-xl); align-items: center;">
+    <section id="abstract" class="section-abstract" style="min-height: 100vh; padding-top: calc(var(--nav-height) + var(--space-xl)); display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-xl); align-items: center;">
       <div class="container" style="grid-column: 1 / -1; display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-xl); align-items: center;">
         
         <!-- Left: Text content -->
@@ -980,127 +881,12 @@
     <!-- SECTION: Methodology (About) -->
     <section id="methodology" class="section-methodology">
       <div class="container">
-        <div class="section-header reveal" style="margin-bottom: var(--space-xl);">
-          <span class="section-num">03</span>
+        <div style="margin-bottom: var(--space-xl);">
+          <span class="mono" style="color: var(--accent);">02</span>
           <h2>About & <em>Approach</em></h2>
         </div>
-        
-        <!-- About grid: sidebar + content -->
-        <div style="display: grid; grid-template-columns: 280px 1fr; gap: var(--space-xl);">
-          
-          <!-- Left: Portrait & Meta -->
-          <div class="about-sidebar" style="position: sticky; top: calc(var(--nav-height) + var(--space-lg));">
-            <!-- Portrait placeholder -->
-            <div class="about-portrait reveal" style="width: 100%; aspect-ratio: 3/4; background: var(--surface); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; margin-bottom: var(--space-md); position: relative; overflow: hidden; transition: background var(--trans-base);">
-              <div style="font-family: var(--font-display); font-style: italic; font-size: 72px; color: var(--border); letter-spacing: -0.04em; transition: color var(--trans-base);">MA</div>
-            </div>
-            
-            <!-- Meta info grid -->
-            <div class="about-meta reveal" style="display: grid; grid-template-columns: 1fr; gap: 1px; background: var(--border); border: 1px solid var(--border);">
-              <div style="background: var(--bg); padding: var(--space-sm);">
-                <div class="mono" style="font-size: 9px; color: var(--muted); margin-bottom: 2px;">Location</div>
-                <div style="font-size: 13px; color: var(--ink);">Lahore, PK</div>
-              </div>
-              <div style="background: var(--bg); padding: var(--space-sm);">
-                <div class="mono" style="font-size: 9px; color: var(--muted); margin-bottom: 2px;">Status</div>
-                <div style="font-size: 13px; color: var(--accent);">Available</div>
-              </div>
-              <div style="background: var(--bg); padding: var(--space-sm);">
-                <div class="mono" style="font-size: 9px; color: var(--muted); margin-bottom: 2px;">Email</div>
-                <div style="font-size: 11px; color: var(--ink); word-break: break-all;">munimahmad2@gmail.com</div>
-              </div>
-            </div>
-          </div>
-          
-          <!-- Right: Bio & Skills -->
-          <div class="about-content">
-            <div class="reveal" style="margin-bottom: var(--space-xl);">
-              <p style="font-size: 17px; line-height: 1.75; color: var(--ink); margin-bottom: var(--space-md);">
-                <span style="font-family: var(--font-display); font-style: italic; font-size: 64px; float: left; line-height: 0.8; margin-right: 8px; margin-top: 8px; color: var(--accent);">F</span>ull-Stack AI Engineer with expertise in building production-ready AI applications from model development to deployment. Specialized in RAG systems, LLM optimization, and scalable backend architecture. Proven track record of reducing model latency by 65% and delivering end-to-end ML solutions.
-              </p>
-              <p style="font-size: 17px; line-height: 1.75; color: var(--ink); margin-bottom: var(--space-md);">
-                At <strong>Endshift</strong> I shipped a RAG pipeline handling real traffic — optimizing Mistral-7B inference with semantic caching, cutting latency and cost. On the side, I built <strong>Recallm</strong>, an open-source Python library for LLM semantic caching, because I kept solving the same problem and figured others were too.
-              </p>
-              <p style="font-size: 17px; line-height: 1.75; color: var(--ink);">
-                I'm wrapping up my Computer Science degree at UCP in Lahore and actively looking for <strong>AI engineering roles</strong> — especially anything involving LLM evaluation, RLHF, or production-scale inference work.
-              </p>
-            </div>
-            
-            <!-- Tech Stack -->
-            <div class="reveal" style="margin-top: var(--space-xl); padding-top: var(--space-xl); border-top: 1px solid var(--border);">
-              <div class="mono" style="font-size: 12px; color: var(--accent); margin-bottom: var(--space-md);">Tech Stack</div>
-              <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: var(--space-sm);">
-                <div class="mono" style="font-size: 10px; color: var(--muted); padding: 8px 12px; background: var(--surface); border: 1px solid var(--border);">PyTorch</div>
-                <div class="mono" style="font-size: 10px; color: var(--muted); padding: 8px 12px; background: var(--surface); border: 1px solid var(--border);">Hugging Face</div>
-                <div class="mono" style="font-size: 10px; color: var(--muted); padding: 8px 12px; background: var(--surface); border: 1px solid var(--border);">LangChain</div>
-                <div class="mono" style="font-size: 10px; color: var(--muted); padding: 8px 12px; background: var(--surface); border: 1px solid var(--border);">ChromaDB</div>
-                <div class="mono" style="font-size: 10px; color: var(--muted); padding: 8px 12px; background: var(--surface); border: 1px solid var(--border);">FastAPI</div>
-                <div class="mono" style="font-size: 10px; color: var(--muted); padding: 8px 12px; background: var(--surface); border: 1px solid var(--border);">React</div>
-                <div class="mono" style="font-size: 10px; color: var(--muted); padding: 8px 12px; background: var(--surface); border: 1px solid var(--border);">Next.js</div>
-                <div class="mono" style="font-size: 10px; color: var(--muted); padding: 8px 12px; background: var(--surface); border: 1px solid var(--border);">.NET C#</div>
-                <div class="mono" style="font-size: 10px; color: var(--muted); padding: 8px 12px; background: var(--surface); border: 1px solid var(--border);">AWS</div>
-                <div class="mono" style="font-size: 10px; color: var(--muted); padding: 8px 12px; background: var(--surface); border: 1px solid var(--border);">Docker</div>
-                <div class="mono" style="font-size: 10px; color: var(--muted); padding: 8px 12px; background: var(--surface); border: 1px solid var(--border);">PostgreSQL</div>
-                <div class="mono" style="font-size: 10px; color: var(--muted); padding: 8px 12px; background: var(--surface); border: 1px solid var(--border);">Redis</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    
-    <div class="divider" style="border-top: 1px solid var(--border); margin: 0 var(--space-lg); position: relative;">
-      <span class="divider-label mono" style="position: absolute; top: -10px; left: 50%; transform: translateX(-50%); background: var(--bg); padding: 0 var(--space-sm); color: var(--muted); font-size: 10px;">Experience</span>
-    </div>
-    
-    <!-- SECTION: Experience -->
-    <section id="experience" class="section-experience">
-      <div class="container">
-        <div class="section-header reveal" style="margin-bottom: var(--space-xl);">
-          <span class="section-num">04</span>
-          <h2>Where <em>I've Been</em></h2>
-        </div>
-        
-        <!-- Experience timeline -->
-        <div class="exp-list" style="display: flex; flex-direction: column; gap: var(--space-lg);">
-          
-          <!-- Endshift -->
-          <article class="exp-item reveal" style="display: grid; grid-template-columns: 180px 1fr; gap: var(--space-lg); padding-bottom: var(--space-lg); border-bottom: 1px solid var(--border);">
-            <div class="exp-date mono" style="color: var(--muted); font-size: 11px;">May 2025 – Oct 2025</div>
-            <div>
-              <h4 style="font-family: var(--font-body); font-weight: 600; font-size: 20px; margin-bottom: 4px; color: var(--ink);">ML Engineer</h4>
-              <div class="mono" style="font-size: 11px; color: var(--accent); margin-bottom: var(--space-sm);">Endshift — Lahore, Pakistan</div>
-              <p style="font-size: 15px; color: var(--muted); line-height: 1.7;">
-                Architected production RAG pipeline (500+ queries daily, 98% uptime). Reduced Mistral-7B inference latency by 65% through batching, quantization, and optimization. Built .NET backend with Okta SSO, deployed on AWS EC2 with Docker.
-              </p>
-            </div>
-          </article>
-          
-          <!-- Recallm -->
-          <article class="exp-item reveal" style="display: grid; grid-template-columns: 180px 1fr; gap: var(--space-lg); padding-bottom: var(--space-lg); border-bottom: 1px solid var(--border);">
-            <div class="exp-date mono" style="color: var(--muted); font-size: 11px;">2022 – Present</div>
-            <div>
-              <h4 style="font-family: var(--font-body); font-weight: 600; font-size: 20px; margin-bottom: 4px; color: var(--ink);">Open Source Author</h4>
-              <div class="mono" style="font-size: 11px; color: var(--accent); margin-bottom: var(--space-sm);">Recallm — recallm.dev</div>
-              <p style="font-size: 15px; color: var(--muted); line-height: 1.7;">
-                Designed and published Python semantic cache library for LLMs. Handles embedding-based similarity matching to reduce redundant inference calls. Production-focused with Redis/in-memory storage, Prometheus metrics, async support.
-              </p>
-            </div>
-          </article>
-          
-          <!-- Education -->
-          <article class="exp-item reveal" style="display: grid; grid-template-columns: 180px 1fr; gap: var(--space-lg);">
-            <div class="exp-date mono" style="color: var(--muted); font-size: 11px;">2022 – July 2026</div>
-            <div>
-              <h4 style="font-family: var(--font-body); font-weight: 600; font-size: 20px; margin-bottom: 4px; color: var(--ink);">BSc Computer Science</h4>
-              <div class="mono" style="font-size: 11px; color: var(--accent); margin-bottom: var(--space-sm);">University of Central Punjab — Lahore</div>
-              <p style="font-size: 15px; color: var(--muted); line-height: 1.7;">
-                Final semester. Focus areas: machine learning, distributed systems, and software engineering. Graduating July 2026.
-              </p>
-            </div>
-          </article>
-          
-        </div>
+        <!-- About content will go here -->
+        <div style="color: var(--muted);">About section coming soon...</div>
       </div>
     </section>
     
@@ -1112,65 +898,20 @@
     <!-- SECTION: Appendix (Contact) -->
     <section id="appendix" class="section-appendix">
       <div class="container">
-        <div class="section-header reveal" style="margin-bottom: var(--space-xl);">
-          <span class="section-num">05</span>
-          <h2>Let's Build<br><em>Something Real.</em></h2>
+        <div style="margin-bottom: var(--space-xl);">
+          <span class="mono" style="color: var(--accent);">03</span>
+          <h2>Let's <em>Connect</em></h2>
         </div>
-        
-        <div style="max-width: 720px;">
-          <p class="reveal" style="font-size: 18px; color: var(--muted); line-height: 1.75; margin-bottom: var(--space-xl);">
-            I'm actively looking for AI engineering roles — RLHF, LLM evaluation, inference infrastructure, or anything that involves making models actually work. If that sounds like your team, let's talk.
-          </p>
-          
-          <!-- Contact links -->
-          <div class="contact-links reveal" style="display: flex; flex-direction: column; gap: 1px; background: var(--border); border: 1px solid var(--border);">
-            
-            <a href="mailto:munimahmad2@gmail.com" class="contact-link" style="display: flex; justify-content: space-between; align-items: center; padding: var(--space-md); background: var(--bg); transition: all var(--trans-base);">
-              <div>
-                <div class="mono" style="font-size: 11px; color: var(--muted); margin-bottom: 2px;">Email</div>
-                <div style="font-size: 15px; color: var(--ink);">munimahmad2@gmail.com</div>
-              </div>
-              <span style="color: var(--accent); transition: transform var(--trans-base);">↗</span>
-            </a>
-            
-            <a href="https://github.com/munimx" target="_blank" rel="noopener noreferrer" class="contact-link" style="display: flex; justify-content: space-between; align-items: center; padding: var(--space-md); background: var(--bg); transition: all var(--trans-base);">
-              <div>
-                <div class="mono" style="font-size: 11px; color: var(--muted); margin-bottom: 2px;">GitHub</div>
-                <div style="font-size: 15px; color: var(--ink);">github.com/munimx</div>
-              </div>
-              <span style="color: var(--accent); transition: transform var(--trans-base);">↗</span>
-            </a>
-            
-            <a href="https://linkedin.com/in/munimahmad" target="_blank" rel="noopener noreferrer" class="contact-link" style="display: flex; justify-content: space-between; align-items: center; padding: var(--space-md); background: var(--bg); transition: all var(--trans-base);">
-              <div>
-                <div class="mono" style="font-size: 11px; color: var(--muted); margin-bottom: 2px;">LinkedIn</div>
-                <div style="font-size: 15px; color: var(--ink);">linkedin.com/in/munimahmad</div>
-              </div>
-              <span style="color: var(--accent); transition: transform var(--trans-base);">↗</span>
-            </a>
-            
-            <a href="https://recallm.dev" target="_blank" rel="noopener noreferrer" class="contact-link" style="display: flex; justify-content: space-between; align-items: center; padding: var(--space-md); background: var(--bg); transition: all var(--trans-base);">
-              <div>
-                <div class="mono" style="font-size: 11px; color: var(--muted); margin-bottom: 2px;">Website</div>
-                <div style="font-size: 15px; color: var(--ink);">recallm.dev</div>
-              </div>
-              <span style="color: var(--accent); transition: transform var(--trans-base);">↗</span>
-            </a>
-            
-          </div>
-        </div>
+        <!-- Contact content will go here -->
+        <div style="color: var(--muted);">Contact section coming soon...</div>
       </div>
     </section>
     
     <!-- Footer -->
-    <footer style="border-top: 1px solid var(--border); padding: var(--space-lg);">
-      <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
+    <footer style="border-top: 1px solid var(--border); padding: var(--space-lg); text-align: center;">
+      <div class="container">
         <div class="mono" style="color: var(--muted); font-size: 10px;">
           Munim Ahmad — Lahore, Pakistan — 2025
-        </div>
-        <div style="display: flex; align-items: center; gap: 8px;">
-          <div class="mono" style="color: var(--muted); font-size: 10px;">Available for work</div>
-          <div style="width: 6px; height: 6px; background: var(--accent); border-radius: 50%; animation: pulse 2s ease-in-out infinite;"></div>
         </div>
       </div>
     </footer>
@@ -1216,22 +957,21 @@
     const navLinks = document.querySelectorAll('.nav-links a');
     const sections = document.querySelectorAll('section[id]');
     
-    // Sticky nav on scroll + active section detection
+    // Sticky nav on scroll
     window.addEventListener('scroll', () => {
       nav.classList.toggle('scrolled', window.scrollY > 40);
       
-      // Active section detection for sidebar
+      // Active section detection
       let current = '';
       sections.forEach(section => {
         const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
         if (window.scrollY >= sectionTop - 200) {
           current = section.getAttribute('id');
         }
       });
       
-      // Update both nav links and sidebar links
-      const allNavLinks = document.querySelectorAll('.nav-links a, .sidebar-nav a');
-      allNavLinks.forEach(link => {
+      navLinks.forEach(link => {
         link.classList.remove('active');
         if (link.getAttribute('href') === '#' + current) {
           link.classList.add('active');
@@ -1259,25 +999,22 @@
     });
     
     // ===================================
-    // MOBILE SIDEBAR TOGGLE
+    // MOBILE MENU TOGGLE
     // ===================================
     const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-    const sidebar = document.querySelector('.sidebar');
+    const navLinksContainer = document.querySelector('.nav-links');
     
-    if (mobileMenuBtn && sidebar) {
+    if (mobileMenuBtn) {
       mobileMenuBtn.addEventListener('click', () => {
-        sidebar.classList.toggle('open');
-        mobileMenuBtn.textContent = sidebar.classList.contains('open') ? '✕' : '☰';
+        navLinksContainer.classList.toggle('open');
+        mobileMenuBtn.textContent = navLinksContainer.classList.contains('open') ? '✕' : '☰';
       });
       
-      // Close sidebar when link is clicked on mobile
-      const sidebarLinks = document.querySelectorAll('.sidebar-nav a');
-      sidebarLinks.forEach(link => {
+      // Close mobile menu when link is clicked
+      navLinks.forEach(link => {
         link.addEventListener('click', () => {
-          if (window.innerWidth <= 1024) {
-            sidebar.classList.remove('open');
-            mobileMenuBtn.textContent = '☰';
-          }
+          navLinksContainer.classList.remove('open');
+          mobileMenuBtn.textContent = '☰';
         });
       });
     }
