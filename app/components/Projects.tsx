@@ -78,8 +78,8 @@ function WorkflowVisual({ staticBasePath }: { staticBasePath: string }) {
         <Image
           src={`${staticBasePath}/assets/projects/recallm-workflow.svg`}
           alt="Recallm semantic cache decision workflow"
-          width={680}
-          height={700}
+          width={600}
+          height={740}
           className="w-full h-auto object-contain workflow-svg-compact"
         />
       </div>
