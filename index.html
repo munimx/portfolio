@@ -318,6 +318,22 @@
       to { transform: rotate(360deg); }
     }
     
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+    
+    @keyframes scrollPulse {
+      0%, 100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      50% {
+        opacity: 0.5;
+        transform: translateY(8px);
+      }
+    }
+    
     .reveal {
       opacity: 0;
       transform: translateY(28px);
@@ -327,6 +343,30 @@
     .reveal.visible {
       opacity: 1;
       transform: translateY(0);
+    }
+    
+    /* Hero section specific styles */
+    .cta-primary:hover {
+      background: var(--accent) !important;
+      border-color: var(--accent) !important;
+      transform: translateY(-2px);
+    }
+    
+    .cta-secondary:hover {
+      color: var(--accent);
+      gap: 14px !important;
+    }
+    
+    .cta-secondary:hover span {
+      transform: translate(4px, -4px);
+    }
+    
+    .stat:hover {
+      background: var(--surface) !important;
+    }
+    
+    .section-abstract {
+      position: relative;
     }
     
     /* ===================================
@@ -485,6 +525,24 @@
       .divider {
         margin: 0 var(--space-md);
       }
+      
+      /* Hero section mobile */
+      .section-abstract {
+        grid-template-columns: 1fr !important;
+        padding-top: calc(var(--nav-height) + var(--space-lg)) !important;
+      }
+      
+      .section-abstract .container {
+        grid-template-columns: 1fr !important;
+      }
+      
+      .hero-right {
+        display: none !important;
+      }
+      
+      .scroll-hint {
+        display: none !important;
+      }
     }
   </style>
 </head>
@@ -515,17 +573,74 @@
   <main>
     
     <!-- SECTION: Abstract (Home/Hero) -->
-    <section id="abstract" class="section-abstract" style="min-height: 100vh; padding-top: calc(var(--nav-height) + var(--space-xl));">
-      <div class="container">
-        <div style="max-width: 800px;">
-          <div class="mono" style="color: var(--accent); margin-bottom: var(--space-md);">— Full-Stack AI Engineer</div>
-          <h1>Munim<br><span style="font-style: normal; color: var(--accent);">Ahmad.</span></h1>
-          <p style="font-size: 18px; color: var(--muted); max-width: 520px; margin-bottom: var(--space-lg);">
-            Building production-ready AI applications from model development to deployment. 
-            Specialized in <em>RAG systems, LLM optimization,</em> and scalable backend architecture.
+    <section id="abstract" class="section-abstract" style="min-height: 100vh; padding-top: calc(var(--nav-height) + var(--space-xl)); display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-xl); align-items: center;">
+      <div class="container" style="grid-column: 1 / -1; display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-xl); align-items: center;">
+        
+        <!-- Left: Text content -->
+        <div class="hero-left">
+          <div class="mono reveal" style="color: var(--accent); margin-bottom: var(--space-md); display: flex; align-items: center; gap: 8px;">
+            <span style="display: inline-block; width: 24px; height: 1px; background: var(--accent);"></span>
+            Full-Stack AI Engineer<span class="cursor-blink" style="display: inline-block; width: 8px; height: 14px; background: var(--accent); margin-left: 4px; animation: blink 1s step-end infinite; vertical-align: middle;"></span>
+          </div>
+          
+          <h1 class="reveal" style="margin-bottom: var(--space-lg); opacity: 0; animation: fadeUp 0.8s ease forwards 0.3s;">
+            Munim<br>
+            <span style="font-style: normal; color: var(--accent); font-family: var(--font-body); font-weight: 700;">Ahmad.</span>
+          </h1>
+          
+          <p class="reveal" style="font-size: 18px; color: var(--muted); max-width: 480px; margin-bottom: var(--space-lg); line-height: 1.75; opacity: 0; animation: fadeUp 0.8s ease forwards 0.5s;">
+            Building systems that <em style="font-family: var(--font-editorial); color: var(--ink);">reason, remember, and respond.</em>
+            Specialized in RAG pipelines, LLM optimization, and production ML deployment. Based in Lahore, Pakistan.
           </p>
-          <!-- Placeholder for hero content, stats, etc. -->
+          
+          <div class="hero-cta reveal" style="display: flex; align-items: center; gap: var(--space-lg); opacity: 0; animation: fadeUp 0.8s ease forwards 0.7s;">
+            <a href="#publications" class="cta-primary mono" style="background: var(--ink); color: var(--bg); padding: 14px 28px; border: 1px solid var(--ink); transition: all var(--trans-base); display: inline-block;">View Work</a>
+            <a href="#appendix" class="cta-secondary mono" style="color: var(--muted); display: flex; align-items: center; gap: 8px; transition: all var(--trans-base);">Get in touch <span style="transition: transform var(--trans-base);">→</span></a>
+          </div>
         </div>
+        
+        <!-- Right: Stats grid with rotating circle -->
+        <div class="hero-right reveal" style="display: flex; align-items: center; justify-content: center; position: relative; opacity: 0; animation: fadeIn 1.2s ease forwards 0.9s;">
+          
+          <!-- Rotating circular text -->
+          <svg class="spin-circle" viewBox="0 0 280 280" style="position: absolute; width: 280px; height: 280px; animation: spin 20s linear infinite;">
+            <defs>
+              <path id="circle-path" d="M140,140 m-100,0 a100,100 0 1,1 200,0 a100,100 0 1,1 -200,0"/>
+            </defs>
+            <text style="font-family: var(--font-mono); font-size: 10.5px; fill: var(--muted); letter-spacing: 3.5px;">
+              <textPath href="#circle-path">
+                FULL-STACK AI ENGINEER ✦ LAHORE PAKISTAN ✦ OPEN SOURCE ✦ RAG PIPELINES ✦ LLM OPTIMIZATION ✦&nbsp;
+              </textPath>
+            </text>
+          </svg>
+          
+          <!-- Stats grid -->
+          <div class="hero-stat-block" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); border: 1px solid var(--border); width: 320px; z-index: 1;">
+            <div class="stat" style="background: var(--bg); padding: 28px 24px; transition: background var(--trans-base);">
+              <div style="font-family: var(--font-display); font-style: italic; font-size: 42px; color: var(--ink); line-height: 1; margin-bottom: 6px;">3+</div>
+              <div class="mono" style="font-size: 10px; color: var(--muted);">Years Building</div>
+            </div>
+            <div class="stat" style="background: var(--bg); padding: 28px 24px; transition: background var(--trans-base);">
+              <div style="font-family: var(--font-display); font-style: italic; font-size: 42px; color: var(--ink); line-height: 1; margin-bottom: 6px;">2</div>
+              <div class="mono" style="font-size: 10px; color: var(--muted);">Open Source Libs</div>
+            </div>
+            <div class="stat" style="background: var(--bg); padding: 28px 24px; transition: background var(--trans-base);">
+              <div style="font-family: var(--font-display); font-style: italic; font-size: 42px; color: var(--ink); line-height: 1; margin-bottom: 6px;">7B+</div>
+              <div class="mono" style="font-size: 10px; color: var(--muted);">Params Fine-tuned</div>
+            </div>
+            <div class="stat" style="background: var(--bg); padding: 28px 24px; transition: background var(--trans-base);">
+              <div style="font-family: var(--font-display); font-style: italic; font-size: 42px; color: var(--ink); line-height: 1; margin-bottom: 6px;">65%</div>
+              <div class="mono" style="font-size: 10px; color: var(--muted);">Latency Reduced</div>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+      
+      <!-- Scroll hint -->
+      <div class="scroll-hint" style="position: absolute; bottom: 36px; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 8px;">
+        <div class="scroll-line" style="width: 1px; height: 32px; background: var(--muted); animation: scrollPulse 2s ease-in-out infinite;"></div>
+        <div class="mono" style="font-size: 10px; color: var(--muted); writing-mode: vertical-rl; text-orientation: mixed;">Scroll to explore</div>
       </div>
     </section>
     
