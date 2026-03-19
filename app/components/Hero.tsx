@@ -1,18 +1,32 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { useEffect, useMemo, useState } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
 
 const stats = [
-  { value: '3+', label: 'Years Building' },
-  { value: '2', label: 'Open Source Libs' },
-  { value: '7B+', label: 'Params Fine-tuned' },
-  { value: '65%', label: 'Latency Reduced' },
+  { value: '3+', label: 'Years Building', detail: 'Shipping production AI systems end-to-end.' },
+  { value: '2', label: 'Open Source Libs', detail: 'Published tools with practical deployment focus.' },
+  { value: '7B+', label: 'Params Fine-tuned', detail: 'Hands-on adaptation and optimization workflows.' },
+  { value: '65%', label: 'Latency Reduced', detail: 'Measured reduction from pipeline-level optimization.' },
 ];
 
+const ROTATE_EVERY_MS = 2500;
+
 export default function Hero() {
+  const [activeStatIndex, setActiveStatIndex] = useState(0);
+  const activeStat = useMemo(() => stats[activeStatIndex], [activeStatIndex]);
+
+  useEffect(() => {
+    const timer = window.setInterval(() => {
+      setActiveStatIndex((prev) => (prev + 1) % stats.length);
+    }, ROTATE_EVERY_MS);
+
+    return () => window.clearInterval(timer);
+  }, []);
+
   return (
     <section id="hero" className="relative min-h-[calc(100vh-theme(spacing.nav))] py-20 px-8">
-      <div className="max-w-content mx-auto grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-10 items-center">
+      <div className="max-w-content mx-auto grid grid-cols-1 lg:grid-cols-[1.15fr_1fr] gap-10 items-center">
         <motion.div
           initial={false}
           animate={{ opacity: 1, y: 0 }}
@@ -52,33 +66,46 @@ export default function Hero() {
           initial={false}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.15 }}
-          className="flex flex-col items-center gap-8"
+          className="relative flex items-center justify-center min-h-[420px]"
         >
           <svg
-            viewBox="0 0 352 352"
-            className="w-[240px] h-[240px] animate-[spin_20s_linear_infinite] pointer-events-none"
+            viewBox="0 0 440 440"
+            className="w-[360px] h-[360px] md:w-[400px] md:h-[400px] animate-[spin_24s_linear_infinite] pointer-events-none"
             aria-hidden="true"
           >
             <defs>
-              <path id="circle-path-next" d="M176,176 m-140,0 a140,140 0 1,1 280,0 a140,140 0 1,1 -280,0" />
+              <path id="hero-ring-path" d="M220,220 m-170,0 a170,170 0 1,1 340,0 a170,170 0 1,1 -340,0" />
             </defs>
-            <text
-              className="font-mono text-[11.5px] tracking-[3.2px]"
-              style={{ fill: '#C84B2F' }}
-            >
-              <textPath href="#circle-path-next">
+            <text className="font-mono text-[12px] tracking-[3.6px]" style={{ fill: '#C84B2F' }}>
+              <textPath href="#hero-ring-path">
                 FULL-STACK AI ENGINEER ✦ LAHORE PAKISTAN ✦ OPEN SOURCE ✦ RAG PIPELINES ✦ LLM OPTIMIZATION ✦
               </textPath>
             </text>
           </svg>
 
-          <div className="w-[320px] grid grid-cols-2 gap-px bg-border border border-border">
-            {stats.map((stat) => (
-              <div key={stat.label} className="bg-bg p-7">
-                <div className="font-heading italic text-[42px] leading-none mb-1.5">{stat.value}</div>
-                <div className="font-mono text-[10px] text-muted">{stat.label}</div>
+          <div className="absolute inset-0 flex items-center justify-center px-6">
+            <div className="w-[250px] min-h-[190px] border border-border/70 bg-bg/95 backdrop-blur-[1px] px-6 py-7 text-center">
+              <div className="font-mono text-[10px] uppercase tracking-[0.14em] text-accent-primary mb-4">
+                Key Metric
               </div>
-            ))}
+
+              <div className="relative min-h-[110px] flex items-center justify-center">
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={`${activeStat.value}-${activeStat.label}`}
+                    initial={{ opacity: 0, y: 8 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -8 }}
+                    transition={{ duration: 0.35 }}
+                    className="w-full"
+                  >
+                    <div className="font-heading italic text-[56px] leading-none text-ink mb-2">{activeStat.value}</div>
+                    <div className="font-mono text-[10px] uppercase tracking-[0.12em] text-muted">{activeStat.label}</div>
+                    <p className="text-[13px] text-muted leading-[1.55] mt-3">{activeStat.detail}</p>
+                  </motion.div>
+                </AnimatePresence>
+              </div>
+            </div>
           </div>
         </motion.div>
       </div>
