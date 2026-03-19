@@ -61,24 +61,23 @@ export default function Sidebar() {
           ${isMobileOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}`}
       >
         {/* Header */}
-        <div className="px-5 py-6 border-b border-border/80">
-          <div className="font-mono text-[9px] text-accent-primary uppercase tracking-[0.18em]">[ Appendix Index ]</div>
-          <div className="font-heading italic text-[24px] leading-none mt-2 tracking-[-0.02em]">
+        <div className="px-5 py-7 border-b border-border/80 flex flex-col items-center text-center">
+          <div className="font-heading italic text-[34px] leading-none tracking-[-0.02em]">
             MA
           </div>
-          <div className="font-mono text-[9px] text-muted uppercase tracking-[0.1em] mt-2">
+          <div className="font-mono text-[9px] text-muted uppercase tracking-[0.1em] mt-3">
             Editorial Navigation Shell
           </div>
         </div>
 
         {/* Navigation */}
-        <nav className="flex-1 flex flex-col border-y border-border/80">
+        <nav className="flex-1 flex flex-col py-3">
           {sections.map((section) => (
             <Link
               key={section.id}
               href={section.href}
               onClick={() => setIsMobileOpen(false)}
-              className={`relative grid grid-cols-[34px_1fr] items-center px-5 py-3.5 border-b border-border/70 font-mono text-[10px] uppercase tracking-[0.13em] transition-all
+              className={`relative grid grid-cols-[34px_1fr] items-center px-5 py-3.5 font-mono text-[10px] uppercase tracking-[0.13em] transition-all
                 ${
                   activeSection === section.id
                     ? 'text-accent-primary bg-ink/[0.035] pl-[18px] translate-x-[1px]'
@@ -93,15 +92,7 @@ export default function Sidebar() {
         </nav>
 
         {/* Footer Utilities */}
-        <div className="px-5 py-6 border-t border-border/80 space-y-2">
-          <a
-            href={`${process.env.NODE_ENV === 'production' ? '/portfolio' : ''}/munim-ahmad-resume.pdf`}
-            download
-            className="flex items-center justify-between w-full px-3 py-2 border border-border font-mono text-[10px] uppercase tracking-[0.12em] text-ink hover:text-accent-primary hover:border-accent-primary transition-colors"
-          >
-            <span>Download_CV.PDF</span>
-            <span>↗</span>
-          </a>
+        <div className="px-5 py-6 border-t border-border/80">
           <div className="font-mono text-[9px] text-muted uppercase tracking-[0.1em] leading-[1.6]">
             Location: Lahore_PK
           </div>

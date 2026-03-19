@@ -123,7 +123,7 @@ export default function Projects() {
           transition={{ duration: 0.45 }}
           className="mb-16"
         >
-          <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-accent-primary mb-3">02</div>
+          <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-accent-primary mb-3">[ 02 ]</div>
           <h2 className="text-section font-heading italic">
             Selected <em className="font-editorial">Projects</em>
           </h2>

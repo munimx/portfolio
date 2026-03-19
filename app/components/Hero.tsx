@@ -35,7 +35,7 @@ export default function Hero() {
           transition={{ duration: 0.55 }}
         >
           <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-accent-primary mb-4">
-            01 — Abstract
+            [ 01 ]
           </div>
           <h1 className="text-hero font-heading italic leading-[0.92] mb-6">
             Munim

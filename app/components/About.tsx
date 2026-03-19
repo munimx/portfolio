@@ -14,7 +14,7 @@ export default function About() {
           transition={{ duration: 0.45 }}
           className="mb-12"
         >
-          <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-accent-primary mb-3">03</div>
+          <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-accent-primary mb-3">[ 03 ]</div>
           <h2 className="text-section font-heading italic">
             About & <em className="font-editorial">Approach</em>
           </h2>

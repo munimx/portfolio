@@ -44,7 +44,7 @@ export default function Contact() {
           transition={{ duration: 0.45 }}
           className="mb-12"
         >
-          <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-accent-primary mb-3">05</div>
+          <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-accent-primary mb-3">[ 05 ]</div>
           <h2 className="text-section font-heading italic leading-[1.05]">Contact <em className="font-editorial">Matrix</em></h2>
         </motion.div>
 
