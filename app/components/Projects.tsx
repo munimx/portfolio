@@ -71,29 +71,29 @@ function StackTag({ children }: { children: string }) {
   );
 }
 
-function EntryVisual({ visual, staticBasePath }: { visual: ProjectEntry['visual']; staticBasePath: string }) {
-  if (visual === 'workflow') {
-    return (
-      <figure className="mt-8">
-        <div className="border border-border/60 bg-bg p-1.5">
-          <Image
-            src={`${staticBasePath}/assets/projects/recallm-workflow.svg`}
-            alt="Recallm semantic cache decision workflow"
-            width={680}
-            height={806}
-            className="w-full h-auto max-h-[520px] object-contain workflow-svg-compact"
-          />
-        </div>
-        <figcaption className="font-mono text-[10px] text-muted leading-[1.75] mt-4">
-          Intercept → similarity check → cache hit/miss routing from public Recallm architecture.
-        </figcaption>
-      </figure>
-    );
-  }
-
+function WorkflowVisual({ staticBasePath }: { staticBasePath: string }) {
   return (
-    <figure className="mt-8">
-      <div className="relative w-full max-w-[360px] aspect-square border border-border/60 bg-bg p-6 flex items-center justify-center overflow-hidden">
+    <figure className="mt-10">
+      <div className="border border-border/70 bg-gradient-to-b from-[#f3eee6] to-[#eee7dc] p-4 md:p-5">
+        <Image
+          src={`${staticBasePath}/assets/projects/recallm-workflow.svg`}
+          alt="Recallm semantic cache decision workflow"
+          width={680}
+          height={700}
+          className="w-full h-auto object-contain workflow-svg-compact"
+        />
+      </div>
+      <figcaption className="font-mono text-[10px] text-muted leading-[1.75] mt-4">
+        Intercept → similarity check → cache hit/miss routing from public Recallm architecture.
+      </figcaption>
+    </figure>
+  );
+}
+
+function DocuChatSideVisual({ staticBasePath }: { staticBasePath: string }) {
+  return (
+    <figure className="mt-5">
+      <div className="relative w-full max-w-[320px] aspect-square border border-border/60 bg-bg p-6 flex items-center justify-center overflow-hidden">
         <Image
           src={`${staticBasePath}/assets/projects/docuchat-logo.png`}
           alt="DocuChat logo"
@@ -103,7 +103,7 @@ function EntryVisual({ visual, staticBasePath }: { visual: ProjectEntry['visual'
         />
         <div className="absolute inset-0 bg-accent-primary/[0.06] mix-blend-multiply pointer-events-none" />
       </div>
-      <figcaption className="font-mono text-[10px] text-muted leading-[1.75] mt-4">
+      <figcaption className="font-mono text-[10px] text-muted leading-[1.75] mt-3">
         Original logo recolored to the editorial palette while preserving shape and contrast.
       </figcaption>
     </figure>
@@ -132,16 +132,17 @@ export default function Projects() {
         <div className="space-y-20">
           {projectEntries.map((project, index) => (
             <article key={project.title} className="pb-16 border-b border-border/70 last:border-b-0 last:pb-0">
-              <div className="grid grid-cols-1 xl:grid-cols-[160px_1fr] gap-8 xl:gap-10">
-                <div className="pt-1">
+              <div className="grid grid-cols-1 lg:grid-cols-[180px_1fr] gap-8 lg:gap-12">
+                <aside className="pt-1 lg:sticky lg:top-[calc(theme(spacing.nav)+2rem)] h-fit self-start">
                   <div className="font-mono text-[10px] uppercase tracking-[0.16em] text-accent-primary mb-3">
                     Publication {project.index}
                   </div>
-                  <h3 className="font-body font-bold text-[clamp(28px,4vw,44px)] tracking-[-0.02em] leading-[1.08] break-words hyphens-auto max-w-[16ch]">
+                  <h3 className="font-body font-bold text-[clamp(24px,3vw,34px)] tracking-[-0.02em] leading-[1.05] whitespace-nowrap overflow-hidden text-ellipsis max-w-full">
                     {project.title}
                   </h3>
                   <p className="text-[15px] text-muted leading-[1.75] mt-4 max-w-[60ch]">{project.subtitle}</p>
-                </div>
+                  {project.visual === 'docuchat' && <DocuChatSideVisual staticBasePath={staticBasePath} />}
+                </aside>
 
                 <div className="max-w-[760px]">
                   <div className="space-y-9">
@@ -201,7 +202,7 @@ export default function Projects() {
                     </section>
                   </div>
 
-                  <EntryVisual visual={project.visual} staticBasePath={staticBasePath} />
+                  {project.visual === 'workflow' && <WorkflowVisual staticBasePath={staticBasePath} />}
                 </div>
               </div>
 

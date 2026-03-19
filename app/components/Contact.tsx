@@ -65,18 +65,6 @@ export default function Contact() {
               <span className="text-accent-primary">↗</span>
             </a>
 
-            <a
-              href="https://recallm.dev"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex justify-between items-center p-8 bg-bg hover:bg-ink/[0.02] transition-colors"
-            >
-              <div>
-                <div className="font-mono text-[11px] text-muted mb-0.5">Website</div>
-                <div className="text-[15px]">recallm.dev</div>
-              </div>
-              <span className="text-accent-primary">↗</span>
-            </a>
           </div>
         </div>
       </div>

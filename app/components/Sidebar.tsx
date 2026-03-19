@@ -5,10 +5,10 @@ import Link from 'next/link';
 
 const sections = [
   { id: '01', label: 'Abstract', href: '#hero' },
-  { id: '02', label: 'Publications', href: '#projects' },
+  { id: '02', label: 'Selected Work', href: '#projects' },
   { id: '03', label: 'Methodology', href: '#about' },
   { id: '04', label: 'Experience', href: '#experience' },
-  { id: '05', label: 'Appendix', href: '#contact' },
+  { id: '05', label: 'Contact', href: '#contact' },
 ];
 
 export default function Sidebar() {
