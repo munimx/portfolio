@@ -4,11 +4,11 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 
 const sections = [
-  { id: '01', label: 'Abstract', href: '#hero' },
-  { id: '02', label: 'Selected Work', href: '#projects' },
-  { id: '03', label: 'Methodology', href: '#about' },
-  { id: '04', label: 'Experience', href: '#experience' },
-  { id: '05', label: 'Contact', href: '#contact' },
+  { id: '01', label: 'ABSTRACT', href: '#hero' },
+  { id: '02', label: 'SELECTED_WORK', href: '#projects' },
+  { id: '03', label: 'METHODOLOGY', href: '#about' },
+  { id: '04', label: 'EXPERIENCE', href: '#experience' },
+  { id: '05', label: 'CONTACT', href: '#contact' },
 ];
 
 export default function Sidebar() {
@@ -18,8 +18,8 @@ export default function Sidebar() {
   useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY + 200;
-      
-      const sectionElements = sections.map(section => ({
+
+      const sectionElements = sections.map((section) => ({
         id: section.id,
         element: document.querySelector(section.href),
       }));
@@ -36,6 +36,7 @@ export default function Sidebar() {
       }
     };
 
+    handleScroll();
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -55,51 +56,54 @@ export default function Sidebar() {
 
       {/* Sidebar */}
       <aside
-        className={`fixed top-nav left-0 h-[calc(100vh-theme(spacing.nav))] w-sidebar bg-ink/[0.015] border-r border-border z-40 flex flex-col
+        className={`fixed top-nav left-0 h-[calc(100vh-theme(spacing.nav))] w-sidebar bg-bg border-r border-border z-40 flex flex-col
           lg:translate-x-0 transition-transform duration-300
           ${isMobileOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}`}
       >
         {/* Header */}
         <div className="px-5 py-6 border-b border-border/80">
-          <div className="font-mono text-[9px] text-accent-primary uppercase tracking-[0.14em]">
-            Editorial Portfolio
-          </div>
-          <div className="font-heading italic text-[22px] leading-none mt-2 tracking-[-0.02em]">
+          <div className="font-mono text-[9px] text-accent-primary uppercase tracking-[0.18em]">[ Appendix Index ]</div>
+          <div className="font-heading italic text-[24px] leading-none mt-2 tracking-[-0.02em]">
             MA
           </div>
-          <div className="font-mono text-[9px] text-muted uppercase tracking-[0.1em] mt-2">Editorial Index</div>
+          <div className="font-mono text-[9px] text-muted uppercase tracking-[0.1em] mt-2">
+            Editorial Navigation Shell
+          </div>
         </div>
 
         {/* Navigation */}
-        <nav className="flex-1 py-6">
+        <nav className="flex-1 flex flex-col border-y border-border/80">
           {sections.map((section) => (
             <Link
               key={section.id}
               href={section.href}
               onClick={() => setIsMobileOpen(false)}
-              className={`flex items-center gap-2.5 px-5 py-3.5 font-mono text-[10px] uppercase tracking-[0.1em] border-l-2 transition-colors
-                ${activeSection === section.id 
-                  ? 'border-accent-primary text-ink bg-bg' 
-                  : 'border-transparent text-muted hover:text-ink hover:bg-bg/70'
+              className={`relative grid grid-cols-[34px_1fr] items-center px-5 py-3.5 border-b border-border/70 font-mono text-[10px] uppercase tracking-[0.13em] transition-all
+                ${
+                  activeSection === section.id
+                    ? 'text-accent-primary bg-ink/[0.035] pl-[18px] translate-x-[1px]'
+                    : 'text-muted hover:text-ink hover:bg-ink/[0.02]'
                 }`}
             >
-              <span className="text-[9px] text-accent-primary">{section.id}</span>
+              {activeSection === section.id && <span className="absolute left-0 top-0 h-full w-0.5 bg-accent-primary" />}
+              <span className="text-[9px] text-accent-primary tracking-[0.1em]">{section.id}</span>
               <span>{section.label}</span>
             </Link>
           ))}
         </nav>
 
-        {/* Footer - CV Download */}
-        <div className="px-5 py-6 border-t border-border/80">
+        {/* Footer Utilities */}
+        <div className="px-5 py-6 border-t border-border/80 space-y-2">
           <a
             href={`${process.env.NODE_ENV === 'production' ? '/portfolio' : ''}/munim-ahmad-resume.pdf`}
             download
-            className="block w-full px-3 py-2 text-center font-mono text-[10px] uppercase tracking-[0.1em] bg-ink text-bg hover:bg-accent-primary transition-colors"
+            className="flex items-center justify-between w-full px-3 py-2 border border-border font-mono text-[10px] uppercase tracking-[0.12em] text-ink hover:text-accent-primary hover:border-accent-primary transition-colors"
           >
-            Download CV
+            <span>Download_CV.PDF</span>
+            <span>↗</span>
           </a>
-          <div className="font-mono text-[9px] text-muted uppercase tracking-[0.08em] text-center mt-3 leading-[1.6]">
-            Lahore, Pakistan
+          <div className="font-mono text-[9px] text-muted uppercase tracking-[0.1em] leading-[1.6]">
+            Location: Lahore_PK
           </div>
         </div>
       </aside>
