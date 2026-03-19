@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Munim Ahmad — Full-Stack AI Engineer specializing in RAG systems, LLM optimization, and production ML deployment.">
+  <meta property="og:title" content="Munim Ahmad — Full-Stack AI Engineer">
+  <meta property="og:description" content="Building production-ready AI applications from model development to deployment. Creator of Recallm.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://munimx.github.io/portfolio/">
+  
+  <title>Munim Ahmad — Full-Stack AI Engineer</title>
+  
+  <!-- Preconnect for fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  
+  <!-- Font loading: Hybrid approach -->
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@300;400;500&family=JetBrains+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,300..800;1,6..72,300..800&display=swap" rel="stylesheet">
+  
+  <style>
+    /* ===================================
+       DESIGN SYSTEM: HYBRID EDITORIAL
+       Combining warm artisanal (portfolio.html) 
+       with structured research (Stitch)
+       =================================== */
+    
+    :root {
+      /* --- COLOR PALETTE: HYBRID --- */
+      /* Base: Warmer than Stitch, cooler than pure parchment */
+      --bg: #F4F1EA;                    /* Hybrid parchment */
+      --bg-warm: #F6F2EB;               /* Original portfolio warmth */
+      --ink: #1A1714;                   /* Primary text */
+      --ink-muted: #4A453F;             /* Secondary text */
+      
+      /* Accent: Blend rust + editorial red */
+      --accent: #C8331F;                /* Hybrid accent color */
+      --accent-rust: #C84B2F;           /* Original rust */
+      --accent-red: #d41111;            /* Stitch editorial red */
+      
+      /* Neutral tones */
+      --muted: #8C8782;                 /* Tertiary text */
+      --surface: #EBE7DE;               /* Card backgrounds */
+      --surface-stitch: #ebe8e8;        /* Stitch surface tone */
+      --highlight: #E8C196;             /* Hover highlights */
+      --border: #D2CCC0;                /* Divider lines */
+      --border-stitch: #dfddd8;         /* Stitch borders */
+      
+      /* Semantic colors from Stitch */
+      --surface-dim: #e5e3de;
+      --surface-bright: #ffffff;
+      --on-surface: #1c1c1a;
+      --outline: #1c1c1a;
+      
+      /* --- TYPOGRAPHY SCALE --- */
+      /* Display: DM Serif Display (artisanal, large headlines) */
+      --font-display: 'DM Serif Display', serif;
+      
+      /* Body: IBM Plex Sans (clean, readable - from Stitch) */
+      --font-body: 'IBM Plex Sans', sans-serif;
+      
+      /* Mono: JetBrains Mono (tech, code, meta) */
+      --font-mono: 'JetBrains Mono', monospace;
+      
+      /* Editorial accents: Newsreader (pull quotes, emphasis - from Stitch) */
+      --font-editorial: 'Newsreader', serif;
+      
+      /* --- SPACING TOKENS --- */
+      --space-xs: 8px;
+      --space-sm: 12px;
+      --space-md: 24px;
+      --space-lg: 48px;
+      --space-xl: 80px;
+      --space-2xl: 120px;
+      
+      /* --- LAYOUT --- */
+      --max-width: 1440px;
+      --content-width: 1200px;
+      --nav-height: 72px;
+      
+      /* --- BORDERS & RADIUS --- */
+      --radius-sm: 0px;                 /* Sharp edges (editorial feel) */
+      --radius-md: 2px;
+      --radius-lg: 4px;
+      --radius-full: 9999px;
+      
+      /* --- TRANSITIONS --- */
+      --trans-fast: 0.15s ease;
+      --trans-base: 0.25s ease;
+      --trans-slow: 0.35s ease;
+      
+      /* --- SHADOWS --- */
+      --shadow-sm: 0 1px 2px rgba(26, 23, 20, 0.04);
+      --shadow-md: 0 4px 8px rgba(26, 23, 20, 0.08);
+      --shadow-lg: 0 8px 16px rgba(26, 23, 20, 0.12);
+      
+      /* --- Z-INDEX SCALE --- */
+      --z-base: 1;
+      --z-nav: 100;
+      --z-modal: 1000;
+      --z-cursor: 9998;
+      --z-cursor-dot: 9999;
+      
+      /* --- GRAIN TEXTURE --- */
+      --grain-opacity: 0.028;
+    }
+    
+    /* ===================================
+       BASE STYLES & RESET
+       =================================== */
+    
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+    
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      cursor: none; /* Custom cursor */
+      overflow-x: hidden;
+      position: relative;
+    }
+    
+    /* Grain texture overlay (preserved from original) */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+      opacity: var(--grain-opacity);
+      pointer-events: none;
+      z-index: 9997;
+      mix-blend-mode: multiply;
+    }
+    
+    /* ===================================
+       CUSTOM CURSOR SYSTEM
+       =================================== */
+    
+    .cursor {
+      position: fixed;
+      width: 10px;
+      height: 10px;
+      background: var(--accent);
+      border-radius: var(--radius-full);
+      pointer-events: none;
+      z-index: var(--z-cursor-dot);
+      transform: translate(-50%, -50%);
+      transition: transform 0.1s ease, width 0.2s ease, height 0.2s ease, background 0.2s ease;
+      mix-blend-mode: multiply;
+    }
+    
+    .cursor.hover {
+      width: 32px;
+      height: 32px;
+      background: var(--highlight);
+    }
+    
+    .cursor-trail {
+      position: fixed;
+      width: 32px;
+      height: 32px;
+      border: 1px solid var(--accent);
+      border-radius: var(--radius-full);
+      pointer-events: none;
+      z-index: var(--z-cursor);
+      transform: translate(-50%, -50%);
+      transition: transform 0.18s ease, left 0.18s ease, top 0.18s ease;
+      opacity: 0.4;
+    }
+    
+    /* Disable custom cursor on touch devices */
+    @media (hover: none) and (pointer: coarse) {
+      body { cursor: auto; }
+      .cursor, .cursor-trail { display: none; }
+    }
+    
+    /* ===================================
+       TYPOGRAPHY SYSTEM
+       =================================== */
+    
+    h1, h2, h3, h4, h5, h6 {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-weight: 400;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+    }
+    
+    h1 {
+      font-size: clamp(48px, 8vw, 96px);
+      margin-bottom: var(--space-lg);
+    }
+    
+    h2 {
+      font-size: clamp(36px, 6vw, 64px);
+      margin-bottom: var(--space-md);
+    }
+    
+    h3 {
+      font-size: clamp(28px, 4vw, 42px);
+      margin-bottom: var(--space-md);
+    }
+    
+    h4 {
+      font-size: clamp(22px, 3vw, 32px);
+      margin-bottom: var(--space-sm);
+    }
+    
+    p {
+      margin-bottom: var(--space-md);
+      font-size: 16px;
+      line-height: 1.7;
+    }
+    
+    strong {
+      font-weight: 600;
+      color: var(--accent);
+    }
+    
+    em {
+      font-style: italic;
+      font-family: var(--font-editorial);
+      color: var(--ink);
+    }
+    
+    a {
+      color: inherit;
+      text-decoration: none;
+      transition: color var(--trans-base);
+    }
+    
+    a:hover {
+      color: var(--accent);
+    }
+    
+    /* Mono text (code, labels, meta info) */
+    .mono {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    
+    /* Editorial pull quote style */
+    .pull-quote {
+      font-family: var(--font-editorial);
+      font-size: clamp(20px, 3vw, 28px);
+      font-style: italic;
+      line-height: 1.5;
+      color: var(--ink);
+      border-left: 3px solid var(--accent);
+      padding-left: var(--space-md);
+      margin: var(--space-lg) 0;
+    }
+    
+    /* Selection styles */
+    ::selection {
+      background: var(--accent);
+      color: var(--bg);
+    }
+    
+    /* ===================================
+       LAYOUT UTILITIES
+       =================================== */
+    
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 var(--space-lg);
+    }
+    
+    @media (max-width: 768px) {
+      .container {
+        padding: 0 var(--space-md);
+      }
+    }
+    
+    section {
+      padding: var(--space-2xl) 0;
+      position: relative;
+    }
+    
+    /* ===================================
+       ANIMATION UTILITIES
+       =================================== */
+    
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(28px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+    
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    /* ===================================
+       COMPONENT FOUNDATIONS
+       (Detailed components will be added in next phase)
+       =================================== */
+    
+    /* Placeholder for nav */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: var(--z-nav);
+      height: var(--nav-height);
+      background: var(--bg);
+      border-bottom: 1px solid transparent;
+      transition: border-color var(--trans-base), background var(--trans-base);
+    }
+    
+    nav.scrolled {
+      border-bottom-color: var(--border);
+      background: rgba(244, 241, 234, 0.92);
+      backdrop-filter: blur(12px);
+    }
+  </style>
+</head>
+<body>
+  
+  <!-- Custom cursor elements -->
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-trail" id="cursorTrail"></div>
+  
+  <!-- Navigation (will be built in Phase 3) -->
+  <nav id="nav">
+    <div class="container">
+      <!-- Nav content here -->
+    </div>
+  </nav>
+  
+  <!-- Main content sections (will be built in Phase 4) -->
+  <main>
+    <!-- Sections will be added here -->
+  </main>
+  
+  <!-- Basic cursor movement script -->
+  <script>
+    // Custom cursor
+    const cursor = document.getElementById('cursor');
+    const trail = document.getElementById('cursorTrail');
+    let mx = 0, my = 0;
+    
+    document.addEventListener('mousemove', e => {
+      mx = e.clientX;
+      my = e.clientY;
+      cursor.style.left = mx + 'px';
+      cursor.style.top = my + 'px';
+      
+      // Trail follows with delay
+      setTimeout(() => {
+        trail.style.left = mx + 'px';
+        trail.style.top = my + 'px';
+      }, 80);
+    });
+    
+    // Hover effects for interactive elements
+    document.querySelectorAll('a, button').forEach(el => {
+      el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
+      el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+    });
+    
+    // Sticky nav on scroll
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 40);
+    });
+  </script>
+  
+</body>
+</html>
