@@ -124,8 +124,8 @@ export default function Projects() {
           className="mb-16"
         >
           <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-accent-primary mb-3">[ 02 ]</div>
-          <h2 className="text-section font-heading italic">
-            Selected <em className="font-editorial">Projects</em>
+          <h2 className="text-[clamp(40px,6vw,80px)] font-heading italic leading-none tracking-[-0.03em]">
+            Selected <em className="font-editorial text-accent-primary">Projects</em>
           </h2>
         </motion.div>
 

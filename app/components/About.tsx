@@ -15,8 +15,8 @@ export default function About() {
           className="mb-12"
         >
           <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-accent-primary mb-3">[ 03 ]</div>
-          <h2 className="text-section font-heading italic">
-            About & <em className="font-editorial">Approach</em>
+          <h2 className="text-[clamp(40px,6vw,80px)] font-heading italic leading-none tracking-[-0.03em]">
+            About & <em className="font-editorial text-accent-primary">Approach</em>
           </h2>
         </motion.div>
 

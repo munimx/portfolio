@@ -6,7 +6,7 @@ import Link from 'next/link';
 const sections = [
   { id: '01', label: 'ABSTRACT', href: '#hero' },
   { id: '02', label: 'SELECTED_WORK', href: '#projects' },
-  { id: '03', label: 'METHODOLOGY', href: '#about' },
+  { id: '03', label: 'ABOUT', href: '#about' },
   { id: '04', label: 'EXPERIENCE', href: '#experience' },
   { id: '05', label: 'CONTACT', href: '#contact' },
 ];

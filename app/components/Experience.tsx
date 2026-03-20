@@ -38,8 +38,8 @@ export default function Experience() {
           className="mb-12"
         >
           <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-accent-primary mb-3">[ 04 ]</div>
-          <h2 className="text-section font-heading italic">
-            Where <em className="font-editorial">I&apos;ve Been</em>
+          <h2 className="text-[clamp(40px,6vw,80px)] font-heading italic leading-none tracking-[-0.03em]">
+            Where <em className="font-editorial text-accent-primary">I&apos;ve Been</em>
           </h2>
         </motion.div>
 
