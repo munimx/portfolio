@@ -4,17 +4,20 @@ module.exports = {
     './app/**/*.{js,ts,jsx,tsx,mdx}',
     './components/**/*.{js,ts,jsx,tsx,mdx}',
   ],
+  darkMode: 'class',
   theme: {
     extend: {
       colors: {
-        bg: '#F6F2EB',
+        bg: 'var(--bg)',
         accent: {
-          primary: '#C84B2F',
-          secondary: '#C84B2F',
+          primary: 'var(--accent)',
+          secondary: 'var(--accent)',
         },
-        ink: '#1A1714',
-        muted: '#8C8782',
-        border: '#D2CCC0',
+        ink: 'var(--ink)',
+        muted: 'var(--muted)',
+        surface: 'var(--surface)',
+        highlight: 'var(--highlight)',
+        border: 'var(--border)',
       },
       fontFamily: {
         heading: ['var(--font-dm-serif)', 'serif'],

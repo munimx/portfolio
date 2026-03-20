@@ -7,6 +7,39 @@
   --font-ibm-plex: 'IBM Plex Sans', sans-serif;
   --font-jetbrains: 'JetBrains Mono', monospace;
   --font-newsreader: 'DM Serif Display', serif;
+
+  /* Light mode colors */
+  --bg: #F6F2EB;
+  --ink: #1A1714;
+  --accent: #C84B2F;
+  --muted: #8C8782;
+  --surface: #EDE8DE;
+  --highlight: #EAC99A;
+  --border: #D4CCC0;
+}
+
+/* Dark mode via class */
+.dark {
+  --bg: #17140F;
+  --ink: #EAE4D8;
+  --accent: #E05C38;
+  --muted: #6B6560;
+  --surface: #221E18;
+  --highlight: #7A4825;
+  --border: #2E2920;
+}
+
+/* System preference fallback when no class is set */
+@media (prefers-color-scheme: dark) {
+  :root:not(.light):not(.dark) {
+    --bg: #17140F;
+    --ink: #EAE4D8;
+    --accent: #E05C38;
+    --muted: #6B6560;
+    --surface: #221E18;
+    --highlight: #7A4825;
+    --border: #2E2920;
+  }
 }
 
 * {
@@ -17,10 +50,11 @@
 
 body {
   font-family: var(--font-ibm-plex);
-  background-color: theme('colors.bg');
-  color: theme('colors.ink');
+  background-color: var(--bg);
+  color: var(--ink);
   overflow-x: hidden;
   cursor: none;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 html {
@@ -33,16 +67,16 @@ html {
 }
 
 ::-webkit-scrollbar-track {
-  background: theme('colors.bg');
+  background: var(--bg);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: theme('colors.muted');
+  background: var(--muted);
   border-radius: 6px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: theme('colors.accent.primary');
+  background: var(--accent);
 }
 
 /* Grain texture overlay */
@@ -65,13 +99,17 @@ body::before {
   left: 0;
   width: 10px;
   height: 10px;
-  background: theme('colors.accent.primary');
+  background: var(--accent);
   border-radius: 50%;
   transform: translate(-50%, -50%);
   pointer-events: none;
   z-index: 10000;
   mix-blend-mode: multiply;
   transition: width 180ms ease, height 180ms ease;
+}
+
+.dark .cursor-dot {
+  mix-blend-mode: screen;
 }
 
 .cursor-dot.hover {
@@ -85,12 +123,16 @@ body::before {
   left: 0;
   width: 32px;
   height: 32px;
-  border: 1px solid theme('colors.muted');
+  border: 1px solid var(--muted);
   border-radius: 50%;
   transform: translate(-50%, -50%);
   pointer-events: none;
   z-index: 9998;
   mix-blend-mode: multiply;
+}
+
+.dark .cursor-trail {
+  mix-blend-mode: screen;
 }
 
 .docuchat-logo-tint {
@@ -130,7 +172,7 @@ body::before {
   display: inline-block;
   width: 8px;
   height: 1em;
-  background: theme('colors.accent.primary');
+  background: var(--accent);
   margin-left: 5px;
   vertical-align: middle;
   animation: cursor-blink 1s step-end infinite;
@@ -148,7 +190,7 @@ body::before {
 
 /* Change 3: Accent color on h2 em tags */
 h2 em {
-  color: theme('colors.accent.primary');
+  color: var(--accent);
   font-style: italic;
 }
 
@@ -157,7 +199,7 @@ h2 em {
   display: block;
   width: 1px;
   height: 48px;
-  background: theme('colors.border');
+  background: var(--border);
   position: relative;
   overflow: hidden;
   margin-bottom: 10px;
@@ -170,7 +212,7 @@ h2 em {
   left: 0;
   width: 100%;
   height: 100%;
-  background: theme('colors.accent.primary');
+  background: var(--accent);
   animation: scroll-scan 2s ease-in-out infinite;
 }
 
@@ -188,7 +230,7 @@ h2 em {
   font-size: 10px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: theme('colors.muted');
+  color: var(--muted);
 }
 
 /* Change 6: Experience section h3 DM Serif Display */
@@ -205,7 +247,7 @@ h2 em {
   width: 7px;
   height: 7px;
   border-radius: 50%;
-  background: theme('colors.accent.primary');
+  background: var(--accent);
   margin-right: 7px;
   vertical-align: middle;
   animation: live-pulse 2s ease-in-out infinite;
