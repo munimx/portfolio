@@ -45,10 +45,8 @@ export default function About() {
           <div>
             <div className="mb-12">
               <p className="text-[17px] leading-[1.75] mb-4">
-                <span className="font-heading italic text-[64px] leading-[0.8] float-left mr-2 mt-2 text-accent-primary">F</span>
-                ull-Stack AI Engineer with expertise in building production-ready AI applications from model
-                development to deployment. Specialized in RAG systems, LLM optimization, and scalable backend
-                architecture.
+                <span className="font-heading italic text-[64px] leading-[0.8] float-left mr-2 mt-2 text-accent-primary">I</span>
+                &nbsp;build AI systems that are genuinely useful — not demos. My work sits at the intersection of machine learning infrastructure and full-stack engineering, with a particular obsession for making LLMs faster, cheaper, and more reliable in production.
               </p>
               <p className="text-[17px] leading-[1.75] mb-4">
                 At <strong>Endshift</strong> I shipped a RAG pipeline handling real traffic — optimizing Mistral-7B

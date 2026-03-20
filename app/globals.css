@@ -124,3 +124,101 @@ body::before {
   image-rendering: -webkit-optimize-contrast;
   image-rendering: crisp-edges;
 }
+
+/* Change 2: Blinking cursor after hero label */
+.cursor-blink {
+  display: inline-block;
+  width: 8px;
+  height: 1em;
+  background: theme('colors.accent.primary');
+  margin-left: 5px;
+  vertical-align: middle;
+  animation: cursor-blink 1s step-end infinite;
+}
+
+@keyframes cursor-blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+/* Change 3: Accent color on h2 em tags */
+h2 em {
+  color: theme('colors.accent.primary');
+  font-style: italic;
+}
+
+/* Change 4: Scroll indicator with animated scan line */
+.scroll-line-track {
+  display: block;
+  width: 1px;
+  height: 48px;
+  background: theme('colors.border');
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+
+.scroll-line-fill {
+  display: block;
+  position: absolute;
+  top: -100%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: theme('colors.accent.primary');
+  animation: scroll-scan 2s ease-in-out infinite;
+}
+
+@keyframes scroll-scan {
+  0% {
+    top: -100%;
+  }
+  100% {
+    top: 100%;
+  }
+}
+
+.scroll-label {
+  font-family: var(--font-jetbrains);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: theme('colors.muted');
+}
+
+/* Change 6: Experience section h3 DM Serif Display */
+#experience h3 {
+  font-family: var(--font-dm-serif);
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+}
+
+/* Change 7: Pulsing availability dot */
+.live-dot {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: theme('colors.accent.primary');
+  margin-right: 7px;
+  vertical-align: middle;
+  animation: live-pulse 2s ease-in-out infinite;
+}
+
+@keyframes live-pulse {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.4;
+    transform: scale(0.65);
+  }
+}

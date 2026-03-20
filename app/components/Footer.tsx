@@ -8,11 +8,8 @@ export default function Footer() {
           </div>
 
           <div className="flex items-center gap-3">
+            <span className="live-dot" />
             <div className="font-mono text-[10px] text-muted">Available for work</div>
-            <div className="relative w-1.5 h-1.5">
-              <span className="absolute inset-0 bg-accent-primary rounded-full animate-pulse" />
-              <span className="absolute inset-0 bg-accent-primary rounded-full" />
-            </div>
           </div>
         </div>
       </div>

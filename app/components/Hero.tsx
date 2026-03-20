@@ -39,13 +39,16 @@ export default function Hero() {
           <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-accent-primary mb-4">
             [ 01 ]
           </div>
+          <div className="font-mono text-[11px] uppercase tracking-[0.12em] text-muted mb-3">
+            Full-Stack AI Engineer<span className="cursor-blink" />
+          </div>
           <h1 className="text-hero font-heading italic leading-[0.92] mb-6">
             Munim
             <br />
             Ahmad
           </h1>
           <p className="text-[clamp(18px,2.6vw,28px)] leading-[1.25] mb-5">
-            Full-Stack AI Engineer building production-ready AI systems.
+            Building systems that <em className="font-heading">reason, remember, and respond.</em> Open-source author. Based in Lahore, Pakistan.
           </p>
           <p className="text-[15px] text-muted leading-[1.75] max-w-[62ch] mb-8">
             Specialized in RAG pipelines, LLM optimization, and production ML deployment. Based in Lahore, Pakistan.
@@ -124,11 +127,11 @@ export default function Hero() {
         </motion.div>
       </div>
 
-      <div className="absolute bottom-9 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2">
-        <div className="w-px h-8 bg-muted animate-[scrollPulse_2s_ease-in-out_infinite]" />
-        <div className="font-mono text-[10px] text-muted [writing-mode:vertical-rl] [text-orientation:mixed]">
-          Scroll to explore
-        </div>
+      <div className="absolute bottom-9 left-1/2 -translate-x-1/2 flex flex-col items-center">
+        <span className="scroll-line-track">
+          <span className="scroll-line-fill" />
+        </span>
+        <span className="scroll-label">Scroll to explore</span>
       </div>
     </section>
   );
