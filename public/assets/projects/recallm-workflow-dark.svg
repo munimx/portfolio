@@ -1,0 +1,173 @@
+<svg width="100%" viewBox="0 0 600 740" xmlns="http://www.w3.org/2000/svg">
+  <!-- Recallm Semantic Cache Workflow Diagram - Dark Mode -->
+  <!-- Clean rebuild with coherent grid: center=300, consistent spacing -->
+  
+  <defs>
+    <!-- Standard arrow marker (neutral gray) -->
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M1 1L9 5L1 9" fill="none" stroke="#6B6560" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+    <!-- Accent arrow marker (for bypass routes) -->
+    <marker id="arrow-accent" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M1 1L9 5L1 9" fill="none" stroke="#E05C38" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+    <!-- Dashed arrow for merge paths -->
+    <marker id="arrow-muted" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M1 1L9 5L1 9" fill="none" stroke="#5A5550" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="600" height="740" fill="#17140F"/>
+
+  <!-- ========================================== -->
+  <!-- ROW 1: Your Application (y=24) -->
+  <!-- ========================================== -->
+  <g id="node-app">
+    <rect x="190" y="24" width="220" height="42" fill="#EAE4D8" stroke="#2E2920" stroke-width="0.75"/>
+    <text x="300" y="45" text-anchor="middle" dominant-baseline="middle" font-family="IBM Plex Sans, sans-serif" font-size="14" font-weight="500" fill="#17140F">Your application</text>
+  </g>
+  
+  <!-- Arrow: App → wrap -->
+  <line x1="300" y1="66" x2="300" y2="94" stroke="#6B6560" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- ========================================== -->
+  <!-- ROW 2: SemanticCache.wrap() (y=100) -->
+  <!-- ========================================== -->
+  <g id="node-wrap">
+    <rect x="170" y="100" width="260" height="52" fill="#221E18" stroke="#2E2920" stroke-width="0.75"/>
+    <text x="300" y="120" text-anchor="middle" dominant-baseline="middle" font-family="IBM Plex Mono, monospace" font-size="13" font-weight="500" fill="#EAE4D8">SemanticCache.wrap()</text>
+    <text x="300" y="138" text-anchor="middle" dominant-baseline="middle" font-family="IBM Plex Sans, sans-serif" font-size="11" fill="#6B6560">Intercepts every call</text>
+  </g>
+  
+  <!-- Arrow: wrap → stream check -->
+  <line x1="300" y1="152" x2="300" y2="178" stroke="#6B6560" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- ========================================== -->
+  <!-- ROW 3: stream=True? Decision (y=184) -->
+  <!-- ========================================== -->
+  <g id="node-stream-check">
+    <rect x="190" y="184" width="220" height="40" fill="#2E2920" stroke="#E05C38" stroke-width="0.75"/>
+    <text x="300" y="204" text-anchor="middle" dominant-baseline="middle" font-family="IBM Plex Mono, monospace" font-size="13" font-weight="500" fill="#EAE4D8">stream=True?</text>
+  </g>
+  
+  <!-- YES: stream=True → Bypass (right) -->
+  <line x1="410" y1="204" x2="498" y2="204" stroke="#E05C38" stroke-width="1.5" marker-end="url(#arrow-accent)"/>
+  <text x="454" y="196" text-anchor="middle" font-family="IBM Plex Sans, sans-serif" font-size="11" fill="#6B6560">yes</text>
+  
+  <!-- Bypass box (right) -->
+  <g id="node-bypass-right">
+    <rect x="504" y="184" width="72" height="40" fill="#3A2A1A" stroke="#E05C38" stroke-width="0.75"/>
+    <text x="540" y="204" text-anchor="middle" dominant-baseline="middle" font-family="IBM Plex Sans, sans-serif" font-size="12" font-weight="500" fill="#EAE4D8">Bypass</text>
+  </g>
+  
+  <!-- NO: continue down -->
+  <line x1="300" y1="224" x2="300" y2="254" stroke="#6B6560" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="312" y="242" font-family="IBM Plex Sans, sans-serif" font-size="11" fill="#6B6560">no</text>
+
+  <!-- ========================================== -->
+  <!-- ROW 4: User message found? (y=260) -->
+  <!-- ========================================== -->
+  <g id="node-user-msg-check">
+    <rect x="175" y="260" width="250" height="40" fill="#2E2920" stroke="#E05C38" stroke-width="0.75"/>
+    <text x="300" y="280" text-anchor="middle" dominant-baseline="middle" font-family="IBM Plex Sans, sans-serif" font-size="13" font-weight="500" fill="#EAE4D8">User message found?</text>
+  </g>
+  
+  <!-- NO: No user message → Bypass (left) -->
+  <line x1="175" y1="280" x2="102" y2="280" stroke="#E05C38" stroke-width="1.5" marker-end="url(#arrow-accent)"/>
+  <text x="138" y="272" text-anchor="middle" font-family="IBM Plex Sans, sans-serif" font-size="11" fill="#6B6560">no</text>
+  
+  <!-- Bypass box (left) -->
+  <g id="node-bypass-left">
+    <rect x="24" y="260" width="72" height="40" fill="#3A2A1A" stroke="#E05C38" stroke-width="0.75"/>
+    <text x="60" y="280" text-anchor="middle" dominant-baseline="middle" font-family="IBM Plex Sans, sans-serif" font-size="12" font-weight="500" fill="#EAE4D8">Bypass</text>
+  </g>
+  
+  <!-- YES: continue down -->
+  <line x1="300" y1="300" x2="300" y2="330" stroke="#6B6560" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="312" y="318" font-family="IBM Plex Sans, sans-serif" font-size="11" fill="#6B6560">yes</text>
+
+  <!-- ========================================== -->
+  <!-- ROW 5: Embed prompt (y=336) -->
+  <!-- ========================================== -->
+  <g id="node-embed">
+    <rect x="160" y="336" width="280" height="52" fill="#221E18" stroke="#2E2920" stroke-width="0.75"/>
+    <text x="300" y="355" text-anchor="middle" dominant-baseline="middle" font-family="IBM Plex Sans, sans-serif" font-size="13" font-weight="500" fill="#EAE4D8">Embed prompt</text>
+    <text x="300" y="374" text-anchor="middle" dominant-baseline="middle" font-family="IBM Plex Mono, monospace" font-size="10" fill="#6B6560">BAAI/bge-small-en-v1.5 · ONNX</text>
+  </g>
+  
+  <!-- Arrow: Embed → Search -->
+  <line x1="300" y1="388" x2="300" y2="418" stroke="#6B6560" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- ========================================== -->
+  <!-- ROW 6: Search storage (y=424) -->
+  <!-- ========================================== -->
+  <g id="node-search">
+    <rect x="130" y="424" width="340" height="52" fill="#221E18" stroke="#2E2920" stroke-width="0.75"/>
+    <text x="300" y="443" text-anchor="middle" dominant-baseline="middle" font-family="IBM Plex Sans, sans-serif" font-size="13" font-weight="500" fill="#EAE4D8">Search storage</text>
+    <text x="300" y="462" text-anchor="middle" dominant-baseline="middle" font-family="IBM Plex Mono, monospace" font-size="10" fill="#6B6560">namespace · model_id · context_hash · cosine ≥ threshold</text>
+  </g>
+  
+  <!-- Arrow: Search → Similarity check -->
+  <line x1="300" y1="476" x2="300" y2="506" stroke="#6B6560" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- ========================================== -->
+  <!-- ROW 7: Similarity ≥ threshold? (y=512) -->
+  <!-- ========================================== -->
+  <g id="node-similarity-check">
+    <rect x="170" y="512" width="260" height="40" fill="#2E2920" stroke="#E05C38" stroke-width="0.75"/>
+    <text x="300" y="532" text-anchor="middle" dominant-baseline="middle" font-family="IBM Plex Sans, sans-serif" font-size="13" font-weight="500" fill="#EAE4D8">Similarity ≥ threshold?</text>
+  </g>
+  
+  <!-- HIT: Return cached response (right) -->
+  <line x1="430" y1="532" x2="498" y2="532" stroke="#E05C38" stroke-width="1.5" marker-end="url(#arrow-accent)"/>
+  <text x="464" y="524" text-anchor="middle" font-family="IBM Plex Sans, sans-serif" font-size="11" fill="#6B6560">hit</text>
+  
+  <!-- Return cache box -->
+  <g id="node-return-cache">
+    <rect x="504" y="512" width="72" height="40" fill="#EAE4D8" stroke="#2E2920" stroke-width="0.75"/>
+    <text x="540" y="526" text-anchor="middle" dominant-baseline="middle" font-family="IBM Plex Sans, sans-serif" font-size="11" font-weight="500" fill="#17140F">Return</text>
+    <text x="540" y="540" text-anchor="middle" dominant-baseline="middle" font-family="IBM Plex Sans, sans-serif" font-size="11" font-weight="500" fill="#17140F">cache</text>
+  </g>
+  
+  <!-- MISS: continue down -->
+  <line x1="300" y1="552" x2="300" y2="582" stroke="#6B6560" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="316" y="570" font-family="IBM Plex Sans, sans-serif" font-size="11" fill="#6B6560">miss</text>
+
+  <!-- ========================================== -->
+  <!-- ROW 8: Call LLM provider (y=588) -->
+  <!-- ========================================== -->
+  <g id="node-llm">
+    <rect x="130" y="588" width="340" height="52" fill="#221E18" stroke="#2E2920" stroke-width="0.75"/>
+    <text x="300" y="607" text-anchor="middle" dominant-baseline="middle" font-family="IBM Plex Sans, sans-serif" font-size="13" font-weight="500" fill="#EAE4D8">Call LLM provider</text>
+    <text x="300" y="626" text-anchor="middle" dominant-baseline="middle" font-family="IBM Plex Mono, monospace" font-size="10" fill="#6B6560">OpenAI · Anthropic · Ollama · vLLM</text>
+  </g>
+  
+  <!-- Arrow: LLM → Store -->
+  <line x1="300" y1="640" x2="300" y2="670" stroke="#6B6560" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- ========================================== -->
+  <!-- ROW 9: Store embedding + response (y=676) -->
+  <!-- ========================================== -->
+  <g id="node-store">
+    <rect x="170" y="676" width="260" height="40" fill="#221E18" stroke="#2E2920" stroke-width="0.75"/>
+    <text x="300" y="696" text-anchor="middle" dominant-baseline="middle" font-family="IBM Plex Sans, sans-serif" font-size="13" font-weight="500" fill="#EAE4D8">Store embedding + response</text>
+  </g>
+
+  <!-- ========================================== -->
+  <!-- BYPASS ROUTES (dashed paths to LLM) -->
+  <!-- ========================================== -->
+  
+  <!-- Right bypass: down from bypass box to LLM row -->
+  <path d="M540 224 L540 580 L476 580" stroke="#5A5550" stroke-width="1.5" stroke-dasharray="6 4" fill="none" marker-end="url(#arrow-muted)"/>
+  
+  <!-- Left bypass: down from bypass box to LLM row -->
+  <path d="M60 300 L60 580 L124 580" stroke="#5A5550" stroke-width="1.5" stroke-dasharray="6 4" fill="none" marker-end="url(#arrow-muted)"/>
+
+  <!-- ========================================== -->
+  <!-- RETURN PATH: from Store back to caller -->
+  <!-- ========================================== -->
+  <path d="M300 716 L300 728" stroke="#6B6560" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="300" y="738" text-anchor="middle" font-family="IBM Plex Sans, sans-serif" font-size="11" fill="#6B6560">Return response to caller</text>
+
+</svg>

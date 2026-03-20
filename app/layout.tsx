@@ -2,7 +2,6 @@ import type { Metadata } from 'next';
 import { DM_Serif_Display, IBM_Plex_Sans, JetBrains_Mono } from 'next/font/google';
 import './globals.css';
 import { ThemeProvider } from './components/ThemeProvider';
-import ThemeToggle from './components/ThemeToggle';
 
 const dmSerif = DM_Serif_Display({
   weight: ['400'],
@@ -65,7 +64,6 @@ export default function RootLayout({
       </head>
       <body>
         <ThemeProvider>
-          <ThemeToggle />
           {children}
         </ThemeProvider>
       </body>

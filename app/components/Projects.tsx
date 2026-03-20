@@ -2,6 +2,7 @@
 
 import Image from 'next/image';
 import { motion } from 'framer-motion';
+import { useTheme } from './ThemeProvider';
 
 type ProjectLink = {
   label: string;
@@ -72,11 +73,18 @@ function StackTag({ children }: { children: string }) {
 }
 
 function WorkflowVisual({ staticBasePath }: { staticBasePath: string }) {
+  const { resolvedTheme } = useTheme();
+  const svgFile = resolvedTheme === 'dark' ? 'recallm-workflow-dark.svg' : 'recallm-workflow.svg';
+  
   return (
     <figure className="mt-10">
-      <div className="border border-border/70 bg-gradient-to-b from-[#f3eee6] to-[#eee7dc] p-4 md:p-5">
+      <div className={`border border-border/70 p-4 md:p-5 ${
+        resolvedTheme === 'dark' 
+          ? 'bg-gradient-to-b from-[#1f1c16] to-[#17140F]' 
+          : 'bg-gradient-to-b from-[#f3eee6] to-[#eee7dc]'
+      }`}>
         <Image
-          src={`${staticBasePath}/assets/projects/recallm-workflow.svg`}
+          src={`${staticBasePath}/assets/projects/${svgFile}`}
           alt="Recallm semantic cache decision workflow"
           width={600}
           height={740}
