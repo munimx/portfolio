@@ -39,7 +39,8 @@ export default function Hero() {
           <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-accent-primary mb-4">
             [ 01 ]
           </div>
-          <div className="font-mono text-[11px] uppercase tracking-[0.12em] text-muted mb-3">
+          <div className="hero-label font-mono text-[11px] uppercase tracking-[0.12em] text-accent-primary mb-3 flex items-center gap-2">
+            <span className="w-6 h-px bg-accent-primary" />
             Full-Stack AI Engineer<span className="cursor-blink" />
           </div>
           <h1 className="text-hero font-heading italic leading-[0.92] mb-6">
