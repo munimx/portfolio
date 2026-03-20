@@ -41,7 +41,9 @@ export default function Contact() {
           className="mb-12"
         >
           <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-accent-primary mb-3">[ 05 ]</div>
-          <h2 className="text-section font-heading italic leading-[1.05]">Contact <em className="font-editorial">Matrix</em></h2>
+          <h2 className="text-[clamp(40px,6vw,80px)] font-heading italic leading-none tracking-[-0.03em] mb-8">
+            Let&apos;s build<br />something <span className="text-accent-primary">real.</span>
+          </h2>
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-12 gap-10 border-t border-border pt-12">
