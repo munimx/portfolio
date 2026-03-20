@@ -12,7 +12,7 @@ const stats = [
 
 const ROTATE_EVERY_MS = 2500;
 const RING_TEXT =
-  'FULL-STACK AI ENGINEER ✦ LAHORE PAKISTAN ✦ OPEN SOURCE ✦ RAG PIPELINES ✦ LLM OPTIMIZATION ✦ ';
+  'FULL-STACK AI ENGINEER ✦ LAHORE PAKISTAN ✦ OPEN SOURCE ✦ RAG PIPELINES ✦ LLM OPTIMIZATION';
 
 export default function Hero() {
   const [activeStatIndex, setActiveStatIndex] = useState(0);
@@ -80,7 +80,7 @@ export default function Hero() {
             </defs>
             <text className="font-mono text-[13px] tracking-[4px]" style={{ fill: '#C84B2F' }}>
               <textPath href="#hero-ring-path" startOffset="0%">
-                {`${RING_TEXT}${RING_TEXT}`}
+                {RING_TEXT}
               </textPath>
             </text>
           </svg>
