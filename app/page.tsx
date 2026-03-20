@@ -22,7 +22,7 @@ export default function HomePage() {
         </div>
         <Projects />
         <div className="border-t border-border max-w-content mx-auto relative">
-          <span className="absolute -top-2.5 left-1/2 -translate-x-1/2 bg-bg px-3 font-mono text-[10px] text-accent-primary">Methodology</span>
+          <span className="absolute -top-2.5 left-1/2 -translate-x-1/2 bg-bg px-3 font-mono text-[10px] text-accent-primary">About</span>
         </div>
         <About />
         <div className="border-t border-border max-w-content mx-auto relative">
