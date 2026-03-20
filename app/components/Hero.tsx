@@ -11,6 +11,8 @@ const stats = [
 ];
 
 const ROTATE_EVERY_MS = 2500;
+const RING_PATH_RADIUS = 184;
+const RING_PATH_CIRCUMFERENCE = 2 * Math.PI * RING_PATH_RADIUS;
 const RING_TEXT =
   'FULL-STACK AI ENGINEER ✦ LAHORE PAKISTAN ✦ OPEN SOURCE ✦ RAG PIPELINES ✦ LLM OPTIMIZATION';
 
@@ -76,10 +78,20 @@ export default function Hero() {
             aria-hidden="true"
           >
             <defs>
-              <path id="hero-ring-path" d="M240,240 m-184,0 a184,184 0 1,1 368,0 a184,184 0 1,1 -368,0" />
+              <path
+                id="hero-ring-path"
+                d={`M240,240 m-${RING_PATH_RADIUS},0 a${RING_PATH_RADIUS},${RING_PATH_RADIUS} 0 1,1 ${
+                  RING_PATH_RADIUS * 2
+                },0 a${RING_PATH_RADIUS},${RING_PATH_RADIUS} 0 1,1 -${RING_PATH_RADIUS * 2},0`}
+              />
             </defs>
             <text className="font-mono text-[13px] tracking-[4px]" style={{ fill: '#C84B2F' }}>
-              <textPath href="#hero-ring-path" startOffset="0%">
+              <textPath
+                href="#hero-ring-path"
+                startOffset="0%"
+                textLength={RING_PATH_CIRCUMFERENCE}
+                lengthAdjust="spacing"
+              >
                 {RING_TEXT}
               </textPath>
             </text>
