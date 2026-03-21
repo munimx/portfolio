@@ -1,9 +1,12 @@
 'use client';
 
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { skillsData } from '@/lib/data/skills';
 
 export default function About() {
+  const staticBasePath = process.env.NODE_ENV === 'production' ? '/portfolio' : '';
+
   return (
     <section id="about" className="py-20 px-8">
       <div className="max-w-content mx-auto">
@@ -22,8 +25,15 @@ export default function About() {
 
         <div className="grid grid-cols-1 lg:grid-cols-[280px_1fr] gap-12">
           <aside className="lg:sticky lg:top-[calc(theme(spacing.nav)+2rem)] h-fit">
-            <div className="w-full aspect-[3/4] bg-ink/[0.03] border border-border flex items-center justify-center mb-4">
-              <div className="font-heading italic text-[72px] text-border tracking-[-0.04em]">MA</div>
+            <div className="w-full aspect-[3/4] border border-border overflow-hidden mb-4 bg-surface">
+              <Image
+                src={`${staticBasePath}/images/munim-headshot-cropped.png`}
+                alt="Munim Ahmad portrait"
+                width={1250}
+                height={1962}
+                className="w-full h-full object-cover object-center"
+                priority
+              />
             </div>
 
             <div className="grid grid-cols-1 gap-px bg-border border border-border">
