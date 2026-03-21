@@ -135,10 +135,6 @@ body::before {
   mix-blend-mode: screen;
 }
 
-.docuchat-logo-tint {
-  filter: hue-rotate(-18deg) saturate(0.7) contrast(1.03) brightness(0.96);
-}
-
 @keyframes scrollPulse {
   0%,
   100% {

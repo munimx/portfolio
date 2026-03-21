@@ -103,13 +103,12 @@ function DocuChatSideVisual({ staticBasePath }: { staticBasePath: string }) {
     <figure className="mt-5">
       <div className="relative w-full max-w-[320px] aspect-square border border-border/60 bg-bg p-6 flex items-center justify-center overflow-hidden">
         <Image
-          src={`${staticBasePath}/assets/projects/docuchat-logo.png`}
+          src={`${staticBasePath}/assets/projects/docuchat-logo-terracotta.png`}
           alt="DocuChat logo"
           width={1080}
           height={1080}
-          className="w-full h-full object-contain docuchat-logo-tint relative z-[1]"
+          className="w-full h-full object-contain relative z-[1]"
         />
-        <div className="absolute inset-0 bg-accent-primary/[0.06] mix-blend-multiply pointer-events-none" />
       </div>
       <figcaption className="font-mono text-[10px] text-muted leading-[1.75] mt-3">
         Original logo recolored to the editorial palette while preserving shape and contrast.

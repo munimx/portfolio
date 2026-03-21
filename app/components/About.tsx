@@ -47,7 +47,12 @@ export default function About() {
               </div>
               <div className="bg-bg p-3">
                 <div className="font-mono text-[9px] text-muted mb-0.5">Email</div>
-                <div className="text-[11px] break-all">munimahmad2@gmail.com</div>
+                <a
+                  href="#contact-email"
+                  className="text-[11px] break-all text-ink hover:text-accent-primary transition-colors"
+                >
+                  munimahmad2@gmail.com
+                </a>
               </div>
             </div>
           </aside>

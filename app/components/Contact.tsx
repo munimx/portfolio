@@ -86,6 +86,7 @@ export default function Contact() {
                 return (
                   <a
                     key={row.id}
+                    id={row.label === 'Email' ? 'contact-email' : undefined}
                     href={row.href}
                     target={isExternal ? '_blank' : undefined}
                     rel={isExternal ? 'noopener noreferrer' : undefined}
