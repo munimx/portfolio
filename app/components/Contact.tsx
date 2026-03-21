@@ -1,6 +1,7 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { useEffect, useState } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
 
 const contactRows = [
   {
@@ -30,6 +31,23 @@ const contactRows = [
 ] as const;
 
 export default function Contact() {
+  const [emailCopied, setEmailCopied] = useState(false);
+
+  useEffect(() => {
+    if (!emailCopied) return;
+    const timer = window.setTimeout(() => setEmailCopied(false), 1400);
+    return () => window.clearTimeout(timer);
+  }, [emailCopied]);
+
+  const handleCopyEmail = async () => {
+    try {
+      await navigator.clipboard.writeText('munimahmad2@gmail.com');
+      setEmailCopied(true);
+    } catch {
+      setEmailCopied(false);
+    }
+  };
+
   return (
     <section id="contact" className="py-20 px-8">
       <div className="max-w-content mx-auto">
@@ -83,10 +101,56 @@ export default function Contact() {
                   );
                 }
 
+                if (row.label === 'Email') {
+                  return (
+                    <button
+                      key={row.id}
+                      id="contact-email"
+                      type="button"
+                      onClick={handleCopyEmail}
+                      className={`${sharedClasses} hover:bg-ink/[0.02] text-left w-full`}
+                    >
+                      <div className="font-mono text-[11px] text-muted tracking-[0.14em] uppercase flex items-center gap-2">
+                        <span className="text-accent-primary">{row.id}</span>
+                        <span>{row.label}</span>
+                      </div>
+                      <div className="font-heading italic text-[22px] md:text-[26px] text-ink tracking-[-0.01em] group-hover:text-accent-primary transition-colors">
+                        {row.value}
+                      </div>
+                      <span className="justify-self-start sm:justify-self-end text-accent-primary text-[12px] min-w-[120px] text-right overflow-hidden">
+                        <AnimatePresence mode="wait" initial={false}>
+                          {emailCopied ? (
+                            <motion.span
+                              key="copied"
+                              initial={{ opacity: 0, x: 6 }}
+                              animate={{ opacity: 1, x: 0 }}
+                              exit={{ opacity: 0, x: -6 }}
+                              transition={{ duration: 0.2 }}
+                              className="inline-block"
+                            >
+                              Copied to Clipboard
+                            </motion.span>
+                          ) : (
+                            <motion.span
+                              key="arrow"
+                              initial={{ opacity: 0, x: -6 }}
+                              animate={{ opacity: 1, x: 0 }}
+                              exit={{ opacity: 0, x: 6 }}
+                              transition={{ duration: 0.2 }}
+                              className="inline-block"
+                            >
+                              ↗
+                            </motion.span>
+                          )}
+                        </AnimatePresence>
+                      </span>
+                    </button>
+                  );
+                }
+
                 return (
                   <a
                     key={row.id}
-                    id={row.label === 'Email' ? 'contact-email' : undefined}
                     href={row.href}
                     target={isExternal ? '_blank' : undefined}
                     rel={isExternal ? 'noopener noreferrer' : undefined}
