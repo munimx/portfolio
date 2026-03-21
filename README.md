@@ -20,5 +20,5 @@ npm run build
 
 - GitHub: https://github.com/munimx
 - LinkedIn: https://linkedin.com/in/munimahmad
-- Website: https://recallm.dev
+- Website: https://munimx.github.io/portfolio/
 - Email: munimahmad2@gmail.com
