@@ -31,7 +31,7 @@ export default function About() {
                 alt="Munim Ahmad portrait"
                 width={1250}
                 height={1962}
-                className="w-full h-full object-cover object-center"
+                className="w-full h-full object-cover object-[50%_58%]"
                 priority
               />
             </div>
