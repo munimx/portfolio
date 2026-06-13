@@ -1,29 +1,22 @@
 {
-  "name": "portfolio",
-  "version": "0.2.0",
+  "name": "munim-ahmad-portfolio",
   "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Topographic survey — the portfolio of Munim Ahmad, Full-Stack AI Engineer.",
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
-  },
-  "dependencies": {
-    "next": "^14.2.18",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "framer-motion": "^11.11.17",
-    "react-icons": "^5.3.0"
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview"
   },
   "devDependencies": {
-    "@types/node": "^20.17.6",
-    "@types/react": "^18.3.12",
-    "@types/react-dom": "^18.3.1",
+    "@types/three": "^0.171.0",
     "typescript": "^5.6.3",
-    "tailwindcss": "^3.4.15",
-    "postcss": "^8.4.49",
-    "autoprefixer": "^10.4.20",
-    "eslint": "^8.57.1",
-    "eslint-config-next": "^14.2.18"
+    "vite": "^8.0.16"
+  },
+  "dependencies": {
+    "gsap": "^3.12.5",
+    "lenis": "^1.1.18",
+    "three": "^0.171.0"
   }
 }

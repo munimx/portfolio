@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://munimx.github.io/portfolio/sitemap.xml
+Sitemap: https://munimahmad.me/sitemap.xml
